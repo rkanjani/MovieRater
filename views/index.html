@@ -8,8 +8,6 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-
-
   </head>
   <body>
   <div id="header" class="container header">
@@ -30,9 +28,9 @@
           <input type="name" class="name-form col-md-12" id="fullname" placeholder="Full Name">
         </div>
 
-        <div class="input-append date col-md-6" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-        <label for="password">Date of birth</label>
-        <input class="date-field col-md-12" size="16" type="text" value="DD-MM-YYYY">
+        <div class="input-append date col-md-6" id="dp3" data-date="2012-02-12" data-date-format="yyyy-mm-dd">
+        <label for="date_of_birth">Date of birth</label>
+        <input class="date-field col-md-12" size="16" type="date" value="YYYY-MM-DD">
         <span class="add-on"><i class="icon-th"></i></span>
       </div>
 
@@ -45,10 +43,6 @@
 
 
 
-
-          
-
-
         <div class="password-form col-md-6">
           <label for="password">Password</label>
           <input type="password" class="password-entry col-md-12" id="exampleInputPassword1" placeholder="Password">
@@ -59,28 +53,19 @@
               <div class="col-md-12">
                   <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default gender-button">
-                          <input type="radio" name="gender" value="male" /> Male
+                          <input type="radio" name="gender" value="m" /> Male
                       </label>
                       <label class="btn btn-default gender-button">
-                          <input type="radio" name="gender" value="female" /> Female
+                          <input type="radio" name="gender" value="f" /> Female
                       </label>
                       <label class="btn btn-default gender-button">
-                          <input type="radio" name="gender" value="other" /> Other
+                          <input type="radio" name="gender" value="o" /> Other
                       </label>
                   </div>
               </div>
           </div>
 
-
-
-
-
-
-
-
-
-
-        <button type="submit" class="btn btn-default submit">Register</button>
+        <input type="submit" name="save" value="Register" class="btn btn-default submit"/>
       </form>
 
 

@@ -35,7 +35,7 @@ INSERT INTO TOPICS(description) VALUES
 INSERT INTO MOVIE_TOPICS(topic_id, movie_id) VALUES
 (1,2);
 
-INSERT INTO STUDIO(name, county) VALUES
+INSERT INTO STUDIO(name, country) VALUES
 ('Silver Pictures', 'United States');
 
 INSERT INTO SPONSORS(studio_id, movie_id) VALUES
