@@ -35,6 +35,7 @@ body{
 }
 .submit{
 	margin-top:25px;
+	background-color: #FAF26F;
 }
 
 #register{
@@ -96,6 +97,7 @@ body{
 	max-width: 13%;
     left: 20px;
     margin-top: 50px;
+    background-color: #FAF26F;
 }
 #register-login{
 	margin-left:0px;
