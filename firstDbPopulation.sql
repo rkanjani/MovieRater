@@ -50,5 +50,5 @@ INSERT INTO USERS(first_name, last_name, email, username, password) VALUES
 INSERT INTO WATCHES(user_id, movie_id, date_rated, rating) VALUES
 (1, 1, '2016-04-06', 10);
 
-INSERT INTO PROFILE(user_id, age_range, year_born, gender, device_used) VALUES
-(1, 20, 1996, 'm', 'Computer');
+INSERT INTO PROFILE(user_id, age_range, date_of_birth, gender, device_used) VALUES
+(1, 20, '1996-06-03', 'm', 'Computer');
