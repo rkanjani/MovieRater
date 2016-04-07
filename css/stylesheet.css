@@ -63,8 +63,14 @@ body{
 .name-form-entry{
 	float:left;
 }
+.email-form-entry{
+	margin-top:10px;
+}
 .gender-selection{
 	margin-top:10px;
+}
+.gender{
+	    margin-top: 20px;
 }
 #login{
 	background-color: #f2f2f2;
