@@ -11,21 +11,60 @@ body{
     border-width: medium;
     border-bottom-color: #cccccc;
 }
+.name{
+	float:right;
+	margin-right:41%;
+}
 .logo{
 	margin-top: 6px;
     float: left;
     padding-left: 41%;
 }
-.name{
-	float: right;
-    padding-right: 41%;
+.name-form{
+	margin-top:5px;
+	width:80%;
+	left:10%;
 }
+.date{
+
+}
+.date-field{
+	margin-top:5px;
+	width:80%;
+	left:10%;
+}
+.submit{
+	margin-top:25px;
+}
+
 #register{
 	background-color: #f2f2f2;
 	text-align: center;
 	margin-left:0px;
 	width:50%;
 	height:100%;
+	padding-top:100px;
+	border-right-style: solid;
+    border-width: 1px;
+    border-right-color: #cccccc;
+
+}
+.password-entry{
+	vertical-align: middle;
+	width:80% !important;
+	left:10%;
+	margin-top:5px;
+
+}
+
+.password-form{
+	margin-top:10px;
+}
+.name-form-entry{
+	float:left;
+}
+.gender-selection{
+	margin-top:10px;
 }
 #login{
 	background-color: #f2f2f2;
@@ -33,6 +72,10 @@ body{
 	margin-right:0px;
 	text-align:center;
 	height:100%;
+	padding-top:100px;
+	border-left-style: solid;
+    border-width: 1px;
+    border-left-color: #cccccc;
 }
 #register-login{
 	margin-left:0px;
@@ -41,3 +84,4 @@ body{
 	height:100%;
 	background-color: #f2f2f2;
 }
+
