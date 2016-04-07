@@ -22,7 +22,7 @@
     $email=$_POST['iemail'];
     $password=$_POST['ipassword'];
     $gender=$_POST['igender'];
-    $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
+    $conn_string="host=web0.site.uottawa.ca port=15432 dbname= user= password=";
 
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     $query="INSERT INTO movie_rater.users(First_name,last_name,
