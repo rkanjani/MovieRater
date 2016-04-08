@@ -9,41 +9,77 @@
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   </head>
-  <?php
+  <?
+  session_start();
   if(array_key_exists('save', $_POST))
   {
     $fullname=$_POST['ifullname'];
     $pieces=explode(" ", $fullname);
     $firstname=$pieces[0];
     $lastname=$pieces[1];
-    $username=$pieces[0];
+    $username=$_POST['iemail'];
     $date_of_birth=$_POST['idate_of_birth'];
     $email=$_POST['iemail'];
-    $password=$POST['ipassword'];
+    $password=$_POST['ipassword'];
     $gender=$_POST['igender'];
-    $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
+    $conn_string="host=web0.site.uottawa.ca port=15432 dbname= user= password=";
 
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     $query="INSERT INTO movie_rater.users(First_name,last_name,
       email, username, password) VALUES ('$firstname', '$lastname', '$email', '$username', '$password');";
-
-    $query2="INSERT INTO movie_rater.profile(user_id) SELECT user_id FROM movie_rater.profile WHERE first_name = $firstname;";
-
     $result=pg_query($dbconn,$query);
-    $result2=pg_query($dbconn,$query2);
-    if(!$result||!$result2){
+    if(!$result){
       die("Error in SQL query: " .pg_last_error());
     }
-
+    $query2="INSERT INTO movie_rater.profile(user_id) SELECT user_id FROM movie_rater.users WHERE first_name = '$firstname';";
+    $result2=pg_query($dbconn,$query2);
+    if(!$result2){
+      die("Error in SQL query: " .pg_last_error());
+    }
+    $query3="UPDATE movie_rater.profile SET date_of_birth='$date_of_birth', gender='$gender'";
+    $result3=pg_query($dbconn,$query3);
+    if(!$result3){
+      die("Error in SQL query: " .pg_last_error());
+    }
     echo "Data Successfully Entered";
       pg_free_result($result);
       pg_free_result($result2);
+      pg_free_result($result3);
       pg_close($dbconn);
+  }
+  if(array_key_exists('login', $_POST))
+  {
+    $email=$_POST['lemail'];
+    $password=$_POST['lpassword'];
 
+    $conn_string="host=web0.site.uottawa.ca port=15432 dbname= user= password=";
+    $dbconn=pg_connect($conn_string) or die('Connection failed');
 
+    $query="SELECT password FROM movie_rater.users WHERE email = '$email'";
+    $res=pg_query($dbconn,$query);
+    if(!$res){
+      die("Error in SQL query: " .pg_last_error());
+    }
 
+    $row=pg_fetch_row($res);
+    if($row[0] == $password){
+      $query2="SELECT user_id FROM movie_rater.users WHERE email = '$email'";
+      $res2=pg_query($dbconn,$query2);
+    if(!$res2){
+      die("Error in SQL query: " .pg_last_error());
+    }
+    $row2=pg_fetch_row($res2);
+    echo $row2[0];
+    $_SESSION["user"]=$row2[0];
+    //insert navigation to next page here
+
+    }
+    else{
+      echo "error";
+    }
 
   }
+
   ?>
   <body>
   <div id="header" class="container header">
@@ -58,7 +94,7 @@
 	  	<h2>New?</h2>
 
 
-      <form>
+      <form method="post" action="">
         <div class="name-form-entry col-md-6">
           <label for="name">Full Name</label>
           <input type="name" class="name-form col-md-12" id="ifullname" name="ifullname"placeholder="Full Name" required>
@@ -66,7 +102,7 @@
 
         <div class="input-append date col-md-6" id="dp3" data-date="2012-02-12" data-date-format="yyyy-mm-dd">
         <label for="date_of_birth">Date of birth</label>
-        <input class="date-field col-md-12" size="16" type="date" value="YYYY-MM-DD" name="iname_of_birth" id="idate_of_birth" required>
+        <input class="date-field col-md-12" size="16" type="date" value="YYYY-MM-DD" name="idate_of_birth" id="idate_of_birth" required>
         <span class="add-on"><i class="icon-th"></i></span>
       </div>
 
@@ -111,10 +147,10 @@
 	  	<div id="login" class="col-md-6">
 		  <h2>Veteran?</h2>
 
-      <form>
+      <form method="post" action="">
         <div class="email-form-entry">
           <label for="email" class="col-md-12">Email Address</label>
-          <input type="email" class="login-email col-md-12" id="login-email" placeholder="Email">
+          <input type="email" class="login-email col-md-12" name ="lemail" id="login-email" placeholder="Email">
         </div>
 
 
@@ -125,10 +161,10 @@
 
         <div class="password-form">
           <label for="password" class="col-md-12">Password</label>
-          <input type="password" class="login-password col-md-12" id="login-password" placeholder="Password">
+          <input type="password" class="login-password col-md-12" name="lpassword" id="login-password" placeholder="Password">
         </div>
 
-        <button type="submit" class="btn btn-default col-md-12 login-button">Login</button>
+        <input type="submit" name="login" value="Login"class="btn btn-default col-md-12 login-button"/>
       </form>
 
 
