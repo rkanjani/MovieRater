@@ -12,11 +12,12 @@ INSERT INTO MOVIE (title, date_released) VALUES
 
 INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Ryan', 'Reynolds', '1976-10-23'),
+('Morena', 'Baccarin', '1979-06-02'),
+('Gerard', 'Butler', '1969-11-12'),
 ('Michael', 'Cera', '1988-06-07');
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES
-(1,1),
-(7,2);
+(1,1),(1,2),(2,3),(7,4);
 
 INSERT INTO DIRECTOR(first_name, last_name, country) VALUES
 ('Jeffrey Jacob', 'Abrams', 'United States'),
