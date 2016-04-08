@@ -71,7 +71,8 @@
     $row2=pg_fetch_row($res2);
     echo $row2[0];
     $_SESSION["user"]=$row2[0];
-    //insert navigation to next page here
+     header("Location: http://localhost/MovieRater/views/movies.php");
+    exit;
 
     }
     else{
