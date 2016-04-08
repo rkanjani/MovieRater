@@ -20,6 +20,14 @@
       <div class="col-md-6 name-column">
 	       <h1 class="name">MovieRater</h1>
 
+      <button class="btn btn-default done">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+
+      <button class="btn btn-default rated">
+        <span class="glyphicon glyphicon-star"></span>
+      </button>
+
 
       <div class="col-sm-6 col-sm-offset-3">
           <div id="search-container"> 
