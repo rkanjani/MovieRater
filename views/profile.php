@@ -6,7 +6,7 @@
     <title>MovieRater</title>
     <link rel="shortcut icon" href="../img/star.png">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/stylesheet.css" rel="stylesheet">
+    <link href="../css/profile_stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   </head>
   <?php
@@ -15,7 +15,7 @@
 
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     $user=$_SESSION['user'];
-    $query="SELECT first_name, last_name, email FROM movie_rater.users WHERE user_id=$user;";
+    $query="SELECT first_name, last_name, email, city, province, country FROM movie_rater.users WHERE user_id=$user;";
 
      $res=pg_query($dbconn,$query);
     if(!$res){
@@ -38,31 +38,53 @@
         <h1 class="name">MovieRater</h1>
     </div>
   </div>
-  <div>
-    <p>
-        Name
-        <?php
-        echo $row[0]." ".$row[1];
-        ?>
-    </p>
-    <p>
-        email
-        <?php
-            echo $row[2];
-        ?>
-    </p>
-    <p>
-        Date of Birth
-        <?php
-        echo $row2[0];
-        ?>
-    </p>
-    <p>
-        Gender
-        <?php
-        echo $row2[1];
-        ?>
-    </p>
+  <div id="content" class="container content">
+   <div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="information">
+        <table>
+          <tr>
+            <td> Name </td>
+            <td class="text_center"> <?php echo $row[0]." ".$row[1]; ?> </td>
+            </tr>
+            <tr>
+              <td> Email </td>
+              <td class="text_center"> <?php echo $row[2]; ?> </td>
+            </tr>
+            <tr>
+              <td> Date of Birth </td>
+              <td class="text_center"> <?php echo $row2[0]; ?> </td>
+            </tr>
+            <tr>
+              <td> Gender </td>
+              <td class="text_center"> <?php echo $row2[1]; ?> </td>
+              
+              <?php if ($row[3]!= null): ?>
+              <tr>
+                <td> City </td>
+                <td class="text_center"> <?php echo $row[3]; ?> </td>
+              </tr>
+            <?php endif; ?>
+            
+            <?php if ($row[4]!= null): ?>
+              <tr>
+                <td> Province </td>
+                <td class="text_center"> <?php echo $row[4]; ?> </td>
+              </tr>
+            <?php endif; ?>
+            
+            <?php if ($row[5]!= null): ?>
+              <tr>
+                <td> Country </td>
+                <td class="text_center"> <?php echo $row[5]; ?> </td>
+              </tr>
+            <?php endif; ?>
+
+              
+            </tr>
+        </table>
+    </div>
+  </div>
   </div>
   </body>
 </html>

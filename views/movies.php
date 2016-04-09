@@ -8,9 +8,6 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-   
-
-
   </head>
   <body>
   <div id="header" class="container header">
@@ -21,9 +18,9 @@
       <div class="col-md-6 name-column">
 	       <h1 class="name">MovieRater</h1>
 
-      <button onclick="window.location.href='https://localhost/MovieRater/views/profile.php'" class="btn btn-default profile">
+      <a class="btn btn-default profile" href="profile.php">
         <span class="glyphicon glyphicon-user"></span>
-      </button>
+      </a>
 
       <button class="btn btn-default done">
         <span class="glyphicon glyphicon-ok"></span>
@@ -46,13 +43,6 @@
               </div>
           </div>
       </div>
-
-
-
-
-
-
-
       </div>
     </div>
   </div>
