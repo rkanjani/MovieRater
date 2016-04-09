@@ -1,4 +1,4 @@
-<html lang="en">
+<html ng-app="movieRaterApp" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,7 @@
     $email=$_POST['iemail'];
     $password=$_POST['ipassword'];
     $gender=$_POST['igender'];
-    $conn_string="host=web0.site.uottawa.ca port=15432 dbname= user= password=";
+    $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
 
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     $query="INSERT INTO movie_rater.users(First_name,last_name,
@@ -52,7 +52,7 @@
     $email=$_POST['lemail'];
     $password=$_POST['lpassword'];
 
-    $conn_string="host=web0.site.uottawa.ca port=15432 dbname= user= password=";
+    $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
 
     $query="SELECT password FROM movie_rater.users WHERE email = '$email'";
@@ -84,9 +84,13 @@
   ?>
   <body>
   <div id="header" class="container header">
-  	<div class="row-fluid">
-  		<img class="logo" src="../img/star.png" height="55" with="55"></img>
-	    <h1 class="name">MovieRater</h1>
+    <div class="row-fluid">
+      <div class="col-md-6 logo-column">
+         <img class="logo" src="../img/star.png" height="55" with="55"></img>
+      </div>
+      <div class="col-md-6 name-column">
+         <h1 class="name">MovieRater</h1>    
+      </div>
     </div>
   </div>
 <p> penis </p>
