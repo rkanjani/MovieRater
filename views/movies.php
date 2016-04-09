@@ -77,7 +77,7 @@
 
         <a href="#popup1">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
-          <h4><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
+          <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
         </a>
 
         </span>
