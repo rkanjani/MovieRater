@@ -6,7 +6,7 @@
     <title>MovieRater</title>
     <link rel="shortcut icon" href="../img/star.png">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/profile_stylesheet.css" rel="stylesheet">
+    <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   </head>
   <?php
@@ -35,6 +35,11 @@
     <div id="header" class="container header">
       <div class="row-fluid">
         <div class="col-md-6 logo-column">
+            <button class="btn btn-default logout">
+              <span class="glyphicon glyphicon-log-out"></span>
+            </button>
+
+            <h3 class="status"><i>Check yourself out!</i></h3>
            <img class="logo" src="../img/star.png" height="55" with="55"></img>
         </div>
         <div class="col-md-6 name-column">
@@ -44,8 +49,9 @@
     </div>
     <div id="content" class="container content">
      <div class="row">
-      <div class="col-md-5 col-md-offset-4">
+      <div class="col-md-5">
         <div class="information">
+        <h2 style="padding-left:50px;"><u> Account Information</u></h2>
           <table>
             <tr>
               <td> Name </td>
@@ -89,6 +95,42 @@
           </table>
       </div>
     </div>
+
+    <div class="col-md-7">
+
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+          
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+          
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+
+      <div class="col-xs-2">
+        <img src="../img/dead pool.jpg" height=200>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
   </div>
   </body>
 </html>
