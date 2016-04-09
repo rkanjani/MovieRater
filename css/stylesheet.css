@@ -130,11 +130,10 @@ body{
 	white-space: nowrap;
 }
 .movie-holder{
-	padding-top:10px;
-	padding-left:10px;
+	margin-top:17px;
 	display: inline-block;
 	width:180px;
-	margin-top:10px;
+
 
 }
 .movie{
@@ -268,7 +267,7 @@ body{
     overflow-x: none;
 }
 .movie-title{
-	max-width:142px;
+	max-width:148px;
 	height:50px;
 	white-space: normal;
 }
