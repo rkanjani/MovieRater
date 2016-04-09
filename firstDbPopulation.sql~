@@ -30,7 +30,7 @@ INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Robert', 'Downey Jr', '1965-04-04'), //The Avengers
 ('Chris', 'Evans', '1981-06-13'), //The Avengers
 ('Keanu', 'Reeves', '1964-09-02'), //The Matrix
-('Laurence', 'Fishburne', '1961-07-30'), //The Matrix
+('Mireille', 'Enos', '1975-09-22'), //The Matrix
 
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES
