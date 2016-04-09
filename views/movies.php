@@ -13,7 +13,7 @@
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
 
-    $query="SELECT date_released, title FROM movie_rater.movie;";
+    $query="SELECT date_released, title, movie_id FROM movie_rater.movie;";
      $res=pg_query($dbconn,$query);
     if(!$res){
       die("Error in SQL query: " .pg_last_error());
@@ -71,17 +71,18 @@
       <div class="movie-listing row-fluid">
       <!--Singluar Movie Listing - Need to be looped -->
 
-<?php while ($row = pg_fetch_row($res)): ?>
+<?php while ($row = pg_fetch_row($res)): 
+      $movie_id = $row[2]?>
       <div class="movie-holder">
         <span class="movie">
 
-        <a href="#popup1">
+        <a href="<?= "#"."popup".$movie_id ?>">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
         </a>
 
         </span>
-        <div id="popup1" class="overlay">
+        <div id="<?= "popup".$movie_id ?>" class="overlay">
         <div class="popup">
         <h2><?php echo $row[1] ?> </h2>
         <a class="close" href="#">&times;</a>
