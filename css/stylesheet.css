@@ -130,11 +130,10 @@ body{
 	white-space: nowrap;
 }
 .movie-holder{
-	padding-top:10px;
-	padding-left:10px;
+	margin-top:17px;
 	display: inline-block;
 	width:180px;
-	margin-top:10px;
+
 
 }
 .movie{
@@ -179,19 +178,16 @@ body{
 	background-color: #f2f2f2;
 
 }
-.glyphicon-star{
+.glyphicon{
 	vertical-align: middle;
 	font-size: 20px;
-
 }
-.glyphicon-ok{
-	vertical-align: middle;
-	font-size: 20px;
-
-}
-.glyphicon-user{
-	vertical-align: middle;
-	font-size: 20px;
+.status{
+	z-index: 0;
+	left:265px;
+	margin-top:25px;
+	background-color: #f2f2f2;
+	position:absolute
 }
 
 
@@ -205,6 +201,13 @@ body{
 .profile{
 	z-index: 0;
 	right:335px;
+	margin-top:21px;
+	background-color: #f2f2f2;
+	position:absolute
+}
+.logout{
+	z-index: 0;
+	left:60px;
 	margin-top:21px;
 	background-color: #f2f2f2;
 	position:absolute
@@ -241,7 +244,6 @@ body{
 .popup h2 {
   margin-top: 0;
   color: #333;
-  font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {
   position: absolute;
@@ -257,13 +259,21 @@ body{
   color: #06D85F;
 }
 .popup .content {
-
+  white-space: normal;
 
   overflow: auto;
 }
 .movie-info{
 	padding-left:10px;
 	margin-left:180px;
+    overflow-x:wrap;
+    overflow-x: none;
+}
+.movie-title{
+	max-width:148px;
+	height:50px;
+	white-space: normal;
+	margin-top:5px;
 }
 
 a{
