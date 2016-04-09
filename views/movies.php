@@ -75,12 +75,35 @@
       <div class="movie-holder">
         <span class="movie">
 
-        <a href="#popup1">
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
-          <h4><?php echo $row[1] ?> </h4>
-        </a>
-
+          <a href="#popup1">
+            <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
+            <h4><?php echo $row[1] ?> </h4>
+          </a>
         </span>
+
+        <div id="popup1" class="overlay">
+          <div class="popup">
+            <h2>Deadpool (2016)</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200 style="float:left;">
+              <div class="movie-info">
+                <p class="directors">
+                  <b>Director(s):</b> Tim Miller
+                </p>
+                <p class="actors">
+                  <b>Starring: </b> Ryan Reynolds, Morena Baccarin, T.J. Miller
+                </p>
+                <p class="studio">
+                  <b>Produced by: </b>Twentieth Century Fox Film Corporation
+                </p>
+                <p class="movie-description">
+                  <b>Synopsis: </b>A former Special Forces operative turned mercenary is subjected to a rogue experiment that leaves him with accelerated healing powers, adopting the alter ego Deadpool.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     <?php endwhile ?>
 
@@ -101,29 +124,7 @@
 
   </div>
 
-    <div id="popup1" class="overlay">
-      <div class="popup">
-        <h2>Deadpool (2016)</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-          <img src="../img/Dead pool.jpg" height=250 style="float:left;"></img>
-          <div class="movie-info">
-            <p class="directors">
-              <b>Director(s):</b> Tim Miller
-            </p>
-            <p class="actors">
-              <b>Starring: </b> Ryan Reynolds, Morena Baccarin, T.J. Miller
-            </p>
-            <p class="studio">
-              <b>Produced by: </b>Twentieth Century Fox Film Corporation
-            </p>
-            <p class="movie-description">
-              <b>Synopsis: </b>A former Special Forces operative turned mercenary is subjected to a rogue experiment that leaves him with accelerated healing powers, adopting the alter ego Deadpool.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+  
 
 
 
