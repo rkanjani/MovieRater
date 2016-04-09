@@ -9,6 +9,16 @@
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   </head>
+<?php
+  $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
+    $dbconn=pg_connect($conn_string) or die('Connection failed');
+
+    $query="SELECT movie_id, title FROM movie_rater.movie;";
+     $res=pg_query($dbconn,$query);
+    if(!$res){
+      die("Error in SQL query: " .pg_last_error());
+    }
+    ?>
   <body>
   <div id="header" class="container header">
   	<div class="row-fluid">
@@ -60,14 +70,14 @@
       <div class="movie-listing row-fluid">
       <!--Singluar Movie Listing - Need to be looped -->
 
-
+<?php while ($row = pg_fetch_row($res)): ?>
       <div class="movie-holder">
         <span class="movie">
-          <img src="../img/sample.jpg" height=200>
-          <h4>Deadpool (2016)</h4>
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
+          <h4><?php echo $row[1] ?> </h4>
         </span>
-
       </div>
+    <?php endwhile ?>
 
 
       <!--Ends here-->  
