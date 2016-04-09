@@ -76,13 +76,13 @@
         <span class="movie">
 
         <a href="#popup1">
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
         </a>
 
         </span>
         <div id="popup1" class="overlay">
-      <div class="popup">
+        <div class="popup">
         <h2><?php echo $row[1] ?> </h2>
         <a class="close" href="#">&times;</a>
         <div class="content">
