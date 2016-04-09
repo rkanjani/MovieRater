@@ -23,9 +23,9 @@
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
-        <button class="btn btn-default logout">
+        <a class="btn btn-default logout" href="Logout.php">
           <span class="glyphicon glyphicon-log-out"></span>
-        </button>
+        </a>
 
         <h3 class="status"><i>Start Rating!</i></h3>
 
