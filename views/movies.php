@@ -13,7 +13,7 @@
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
 
-    $query="SELECT movie_id, title FROM movie_rater.movie;";
+    $query="SELECT date_released, title FROM movie_rater.movie;";
      $res=pg_query($dbconn,$query);
     if(!$res){
       die("Error in SQL query: " .pg_last_error());
@@ -77,33 +77,13 @@
 
         <a href="#popup1">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=200>
-          <h4><?php echo $row[1] ?> </h4>
+          <h4><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
         </a>
 
         </span>
-      </div>
-    <?php endwhile ?>
-
-
-
-
-
-
-
-
-      <!--Ends here-->  
-      </div>
-
-    <!--Ends here-->
-    </div>
-
-
-
-  </div>
-
-    <div id="popup1" class="overlay">
+        <div id="popup1" class="overlay">
       <div class="popup">
-        <h2>Deadpool (2016)</h2>
+        <h2><?php echo $row[1] ?> </h2>
         <a class="close" href="#">&times;</a>
         <div class="content">
           <img src="../img/Dead pool.jpg" height=250 style="float:left;"></img>
@@ -124,6 +104,27 @@
         </div>
       </div>
     </div>
+      </div>
+    <?php endwhile ?>
+
+
+
+
+
+
+
+
+      <!--Ends here-->  
+      </div>
+
+    <!--Ends here-->
+    </div>
+
+
+
+  </div>
+
+    
 
 
 
