@@ -93,7 +93,6 @@
       </div>
     </div>
   </div>
-<p> penis </p>
   <div id="register-login" class="container">
   	<div class="row-fluid">
 	  	<div id="register" class="col-md-6">
