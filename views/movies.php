@@ -23,6 +23,13 @@
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
+        <button class="btn btn-default logout">
+          <span class="glyphicon glyphicon-log-out"></span>
+        </button>
+
+        <h3 class="status"><i>Start Rating!</i></h3>
+
+
   		   <img class="logo" src="../img/star.png" height="55" with="55"></img>
       </div>
       <div class="col-md-6 name-column">
@@ -84,10 +91,10 @@
         </span>
         <div id="<?= "popup".$movie_id ?>" class="overlay">
         <div class="popup">
-        <h2><?php echo $row[1] ?> </h2>
+        <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
         <a class="close" href="#">&times;</a>
         <div class="content">
-          <img src="../img/Dead pool.jpg" height=250 style="float:left;"></img>
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
           <div class="movie-info">
             <p class="directors">
               <b>Director(s):</b> Tim Miller
