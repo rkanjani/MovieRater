@@ -1,4 +1,4 @@
-<html lang="en">
+<html ng-app="movieRaterApp" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,9 +84,13 @@
   ?>
   <body>
   <div id="header" class="container header">
-  	<div class="row-fluid">
-  		<img class="logo" src="../img/star.png" height="55" with="55"></img>
-	    <h1 class="name">MovieRater</h1>
+    <div class="row-fluid">
+      <div class="col-md-6 logo-column">
+         <img class="logo" src="../img/star.png" height="55" with="55"></img>
+      </div>
+      <div class="col-md-6 name-column">
+         <h1 class="name">MovieRater</h1>    
+      </div>
     </div>
   </div>
   <div id="register-login" class="container">

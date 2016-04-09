@@ -33,58 +33,62 @@
   ?>
   <body>
     <div id="header" class="container header">
-    <div class="row-fluid">
-        <img class="logo" src="../img/star.png" height="55" with="55"></img>
-        <h1 class="name">MovieRater</h1>
+      <div class="row-fluid">
+        <div class="col-md-6 logo-column">
+           <img class="logo" src="../img/star.png" height="55" with="55"></img>
+        </div>
+        <div class="col-md-6 name-column">
+           <h1 class="name">MovieRater</h1>    
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="content" class="container content">
-   <div class="row">
-    <div class="col-md-5 col-md-offset-4">
-      <div class="information">
-        <table>
-          <tr>
-            <td> Name </td>
-            <td class="text_center"> <?php echo $row[0]." ".$row[1]; ?> </td>
-            </tr>
+    <div id="content" class="container content">
+     <div class="row">
+      <div class="col-md-5 col-md-offset-4">
+        <div class="information">
+          <table>
             <tr>
-              <td> Email </td>
-              <td class="text_center"> <?php echo $row[2]; ?> </td>
-            </tr>
-            <tr>
-              <td> Date of Birth </td>
-              <td class="text_center"> <?php echo $row2[0]; ?> </td>
-            </tr>
-            <tr>
-              <td> Gender </td>
-              <td class="text_center"> <?php echo $row2[1]; ?> </td>
+              <td> Name </td>
+              <td class="text_center"> <?php echo $row[0]." ".$row[1]; ?> </td>
+              </tr>
+              <tr>
+                <td> Email </td>
+                <td class="text_center"> <?php echo $row[2]; ?> </td>
+              </tr>
+              <tr>
+                <td> Date of Birth </td>
+                <td class="text_center"> <?php echo $row2[0]; ?> </td>
+              </tr>
+              <tr>
+                <td> Gender </td>
+                <td class="text_center"> <?php echo $row2[1]; ?> </td>
+                
+                <?php if ($row[3]!= null): ?>
+                <tr>
+                  <td> City </td>
+                  <td class="text_center"> <?php echo $row[3]; ?> </td>
+                </tr>
+              <?php endif; ?>
               
-              <?php if ($row[3]!= null): ?>
-              <tr>
-                <td> City </td>
-                <td class="text_center"> <?php echo $row[3]; ?> </td>
-              </tr>
-            <?php endif; ?>
-            
-            <?php if ($row[4]!= null): ?>
-              <tr>
-                <td> Province </td>
-                <td class="text_center"> <?php echo $row[4]; ?> </td>
-              </tr>
-            <?php endif; ?>
-            
-            <?php if ($row[5]!= null): ?>
-              <tr>
-                <td> Country </td>
-                <td class="text_center"> <?php echo $row[5]; ?> </td>
-              </tr>
-            <?php endif; ?>
+              <?php if ($row[4]!= null): ?>
+                <tr>
+                  <td> Province </td>
+                  <td class="text_center"> <?php echo $row[4]; ?> </td>
+                </tr>
+              <?php endif; ?>
+              
+              <?php if ($row[5]!= null): ?>
+                <tr>
+                  <td> Country </td>
+                  <td class="text_center"> <?php echo $row[5]; ?> </td>
+                </tr>
+              <?php endif; ?>
 
-              
-            </tr>
-        </table>
+                
+              </tr>
+          </table>
+      </div>
     </div>
-  </div>
   </div>
   </body>
 </html>
