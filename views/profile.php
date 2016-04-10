@@ -8,6 +8,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   </head>
   <?php
   session_start();
@@ -35,8 +36,12 @@
     <div id="header" class="container header">
       <div class="row-fluid">
         <div class="col-md-6 logo-column">
-            <button class="btn btn-default logout">
-              <span class="glyphicon glyphicon-log-out"></span>
+            <a class="btn go-back" href="movies.php">
+              <i class="material-icons md-36">keyboard_backspace</i>
+            </a>
+
+            <button class="btn logout-profile">
+              <i class="material-icons md-36">launch</i>
             </button>
 
             <h3 class="status"><i>Check yourself out!</i></h3>
@@ -44,6 +49,7 @@
         </div>
         <div class="col-md-6 name-column">
            <h1 class="name">MovieRater</h1>    
+
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   </head>
   <?
   session_start();
