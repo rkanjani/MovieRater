@@ -14,9 +14,9 @@
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
 
-    $query="SELECT date_released, title, movie_id FROM movie_rater.movie;";
-     $res=pg_query($dbconn,$query);
-    if(!$res){
+    $tag_query="SELECT name, tag_id FROM movie_rater.tag;";
+    $tag_res=pg_query($dbconn,$tag_query);
+    if(!$tag_res){
       die("Error in SQL query: " .pg_last_error());
     }
     ?>
@@ -92,17 +92,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>-->
 
 
-    <!--Singluar Movie Genre - Needs to be looped -->
+    <?php while ($tag_row = pg_fetch_row($tag_res)): ?>
     <div id="movie-container" class="container-fluid movie-container">
 
     
     	<div class="row-fluid">
-        <h2><u>Action</u></h2>
+        <h2><u><?php echo $tag_row[0] ?></u></h2>
     	</div>
 
 
       <div class="movie-listing row-fluid">
-      <!--Singluar Movie Listing - Need to be looped -->
+      <?php
+    $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
+    movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
+      $res=pg_query($dbconn,$query);
+    if(!$res){
+      die("Error in SQL query: " .pg_last_error());
+    }
+
+      ?>
 
 <?php while ($row = pg_fetch_row($res)): 
       $movie_id = $row[2]?>
@@ -240,6 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!--Ends here-->
     </div>
+  <?php endwhile ?>
 
 
 
