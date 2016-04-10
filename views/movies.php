@@ -8,6 +8,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   </head>
 <?php
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
@@ -23,8 +24,8 @@
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
-        <button class="btn btn-default logout">
-          <span class="glyphicon glyphicon-log-out"></span>
+        <button class="btn logout">
+          <i class="material-icons md-36">launch</i>
         </button>
 
         <h3 class="status"><i>Start Rating!</i></h3>
@@ -35,17 +36,17 @@
       <div class="col-md-6 name-column">
 	       <h1 class="name">MovieRater</h1>
 
-      <a class="btn btn-default profile" href="profile.php">
-        <span class="glyphicon glyphicon-user"></span>
+      <a class="profile" href="profile.php">
+       <i class="material-icons md-36">person</i>
       </a>
 
-      <button class="btn btn-default done">
-        <span class="glyphicon glyphicon-ok"></span>
-      </button>
+      <a class="done" href="#">
+        <i class="material-icons md-36">done</i>
+      </a>
 
-      <button class="btn btn-default rated">
-        <span class="glyphicon glyphicon-star"></span>
-      </button>
+      <a class="rated" href="#">
+        <i class="material-icons md-36">star_rate</i>
+      </a>
 
 
       <div class="col-sm-6 col-sm-offset-3">
@@ -81,14 +82,17 @@
 <?php while ($row = pg_fetch_row($res)): 
       $movie_id = $row[2]?>
       <div class="movie-holder">
+        <a href="<?= "#"."popup".$movie_id ?>">
+
         <span class="movie">
 
-        <a href="<?= "#"."popup".$movie_id ?>">
+
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
-        </a>
 
         </span>
+
+                </a>
         <div id="<?= "popup".$movie_id ?>" class="overlay">
         <div class="popup">
         <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
@@ -155,6 +159,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../js/MovieController.js"></script>
     <script type="../js/bootstrap.js"></script>
+
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   </body>
 </html>
