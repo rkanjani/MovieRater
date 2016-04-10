@@ -21,19 +21,6 @@
     }
     ?>
   <body>
-<?php 
-echo $_SERVER['PHP_SELF'];
-echo "<br>";
-echo $_SERVER['SERVER_NAME'];
-echo "<br>";
-echo $_SERVER['HTTP_HOST'];
-echo "<br>";
-echo $_SERVER['HTTP_REFERER'];
-echo "<br>";
-echo $_SERVER['HTTP_USER_AGENT'];
-echo "<br>";
-echo $_SERVER['SCRIPT_NAME'];
-?>
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
@@ -84,7 +71,7 @@ echo $_SERVER['SCRIPT_NAME'];
                       <input type="submit">
                   </form>
 
-<?php
+<!--<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
     $name = $_REQUEST['movie'];
@@ -102,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
      
 }
-?>
+?>-->
 
 
     <!--Singluar Movie Genre - Needs to be looped -->
