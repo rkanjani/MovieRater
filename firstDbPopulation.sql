@@ -30,42 +30,79 @@ INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Robert', 'Downey Jr', '1965-04-04'), //The Avengers
 ('Chris', 'Evans', '1981-06-13'), //The Avengers
 ('Keanu', 'Reeves', '1964-09-02'), //The Matrix
-('Laurence', 'Fishburne', '1961-07-30'), //The Matrix
+('Laurence', 'Fishburne', '1961-07-30'); //The Matrix
 
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES
-(1,1),(1,2),(2,3),(7,4);
+(1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8),(5,9),(5,10),
+(6,11),(6,12),(7,13),(7,14),(8,15),(8,16),(9,17),(9,18),(10,19),(10,20);
 
 INSERT INTO DIRECTOR(first_name, last_name, country) VALUES
-('Jeffrey Jacob', 'Abrams', 'United States'), //Star Wars The Force Awakens
-('Babak', 'Najafi', 'Iran'), //London Has Fallen
-('Marc', 'Forster', 'Germany'), //World War Z
-('Emile', 'Ardolino', 'United States'), //Dirty Dancing
-('Nick', 'Cassavetes', 'United States'), //The Notebook
-('Jason', 'Reitman', 'Canada'), //Juno
-('Andrew', 'Adamson', 'New Zealand'), //Shrek
-('Joss', 'Whedon', 'United States'), //The Avengers
-('Lana', 'Wachowski', 'United States'), //The Matrix
-('Joss', 'Whedon', 'United States');
+('Jeffrey Jacob', 'Abrams', 'United States'), 
+('Babak', 'Najafi', 'Iran'), 
+('Marc', 'Forster', 'Germany'), 
+('Emile', 'Ardolino', 'United States'), 
+('Nick', 'Cassavetes', 'United States'), 
+('Jason', 'Reitman', 'Canada'), 
+('Andrew', 'Adamson', 'New Zealand'), 
+('Joss', 'Whedon', 'United States'), 
+('Lana', 'Wachowski', 'United States'), 
+('Tim', 'Miller', 'United States');
 
 INSERT INTO DIRECTS(director_id, movie_id) VALUES
-(1,3),
-(2,9);
+(1,3),(2,2),(3,4),(4,5),(5,6),(6,7),(7,8),(8,9),(9,10),(10,1);
 
 INSERT INTO TOPICS(description) VALUES
+('A former Special Forces operative turned mercenary is 
+subjected to a rogue experiment that leaves him with 
+accelerated healing powers, adopting the alter ego Deadpool.'),
 ('After the death of the British prime minister, the worlds
  most powerful leaders gather in London to pay their respects. 
  Without warning, terrorists unleash a devastating attack that 
- leaves the city in chaos and ruins. ');
+ leaves the city in chaos and ruins. '),
+('Three decades after the defeat of the Galactic Empire,
+ a new threat arises. The First Order attempts to rule the
+  galaxy and only a ragtag group of heroes can stop them, 
+  along with the help of the Resistance.'),
+('Former United Nations employee Gerry Lane traverses the 
+  world in a race against time to stop the Zombie pandemic 
+  that is toppling armies and governments, and threatening 
+  to destroy humanity itself'),
+('Spending the summer at a Catskills resort with her family, 
+Frances "Baby" Houseman falls in love with the camps dance 
+instructor, Johnny Castle.'),
+('A poor and passionate young man falls in love with a rich 
+young woman and gives her a sense of freedom. They soon 
+are separated by their social differences.'),
+('Faced with an unplanned pregnancy, an offbeat young woman
+ makes an unusual decision regarding her unborn child.'),
+('After his swamp is filled with magical creatures, an ogre 
+agrees to rescue a princess for a villainous lord in order 
+to get his land back.'),
+('Earths mightiest heroes must come together and learn to fight 
+as a team if they are to stop the mischievous Loki and his 
+alien army from enslaving humanity.'),
+('A computer hacker learns from mysterious rebels about the true 
+nature of his reality and his role in the war against its controllers.');
+
 
 INSERT INTO MOVIE_TOPICS(topic_id, movie_id) VALUES
-(1,2);
+(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 
 INSERT INTO STUDIO(name, country) VALUES
+('20th Century Fox', 'United States'),
+('G-BASE Productions', 'United States'),
+('Lucasfilms Ltd.', 'United States'),
+('Skydance Productions', 'United States'),
+('Great American Films', 'United States'),
+('Avery Pix', 'United States'),
+('Mandate Pictures', 'United States'),
+('Pacific Data Images', 'United States'),
+('Marvel Studios', 'United States'),
 ('Silver Pictures', 'United States');
 
 INSERT INTO SPONSORS(studio_id, movie_id) VALUES
-(1,10);
+(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 
 INSERT INTO ROLE(movie_id, actor_id, name) VALUES
 (1,1,'Wade Wilson: Deadpool');
