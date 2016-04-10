@@ -16,7 +16,7 @@
 
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     $user=$_SESSION['user'];
-    $query="SELECT first_name, last_name, email, city, province, country FROM movie_rater.users WHERE user_id=$user;";
+    $query="SELECT first_name, last_name, email, city, province, country, username, password FROM movie_rater.users WHERE user_id=$user;";
 
      $res=pg_query($dbconn,$query);
     if(!$res){
@@ -24,7 +24,7 @@
     }
     $row=pg_fetch_row($res);
 
-    $query2="SELECT date_of_birth, gender FROM movie_rater.profile WHERE user_id=$user;";
+    $query2="SELECT date_of_birth, gender, occupation, device_used, age_range FROM movie_rater.profile WHERE user_id=$user;";
     $res2=pg_query($dbconn,$query2);
     if(!$res2){
       die("Error in SQL query: " .pg_last_error());
@@ -40,9 +40,9 @@
               <i class="material-icons md-36">keyboard_backspace</i>
             </a>
 
-            <button class="btn logout-profile">
+            <a class="btn logout-profile" href="Logout.php">
               <i class="material-icons md-36">launch</i>
-            </button>
+            </a>
 
             <h3 class="status"><i>Check yourself out!</i></h3>
            <img class="logo" src="../img/star.png" height="55" with="55"></img>
@@ -63,6 +63,21 @@
               <td> Name </td>
               <td class="text_center"> <?php echo $row[0]." ".$row[1]; ?> </td>
               </tr>
+
+              <?php if ($row[6]!= null): ?>
+                <tr>
+                  <td> Username </td>
+                  <td class="text_center"> <?php echo $row[6]; ?> </td>
+                </tr>
+              <?php endif; ?>
+
+              <?php if ($row[7]!= null): ?>
+                <tr>
+                  <td> Password </td>
+                  <td class="text_center"> <?php echo $row[7]; ?> </td>
+                </tr>
+              <?php endif; ?>
+
               <tr>
                 <td> Email </td>
                 <td class="text_center"> <?php echo $row[2]; ?> </td>
@@ -93,6 +108,27 @@
                 <tr>
                   <td> Country </td>
                   <td class="text_center"> <?php echo $row[5]; ?> </td>
+                </tr>
+              <?php endif; ?>
+
+              <?php if ($row2[2]!= null): ?>
+                <tr>
+                  <td> Occupation </td>
+                  <td class="text_center"> <?php echo $row2[2]; ?> </td>
+                </tr>
+              <?php endif; ?>
+
+              <?php if ($row2[3]!= null): ?>
+                <tr>
+                  <td> Device Used </td>
+                  <td class="text_center"> <?php echo $row2[3]; ?> </td>
+                </tr>
+              <?php endif; ?>
+
+              <?php if ($row2[4]!= null): ?>
+                <tr>
+                  <td> Age Range </td>
+                  <td class="text_center"> <?php echo $row2[4]; ?> </td>
                 </tr>
               <?php endif; ?>
 

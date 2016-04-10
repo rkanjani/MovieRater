@@ -32,20 +32,20 @@
     if(!$result){
       die("Error in SQL query: " .pg_last_error());
     }
-    $query2="INSERT INTO movie_rater.profile(user_id) SELECT user_id FROM movie_rater.users WHERE first_name = '$firstname';";
+    $query2="INSERT INTO movie_rater.profile(user_id, date_of_birth, gender) SELECT user_id, '$date_of_birth', '$gender' FROM movie_rater.users WHERE first_name = '$firstname';";
     $result2=pg_query($dbconn,$query2);
     if(!$result2){
       die("Error in SQL query: " .pg_last_error());
     }
-    $query3="UPDATE movie_rater.profile SET date_of_birth='$date_of_birth', gender='$gender'";
-    $result3=pg_query($dbconn,$query3);
-    if(!$result3){
-      die("Error in SQL query: " .pg_last_error());
-    }
-    echo "Data Successfully Entered";
+    $session_query="SELECT user_id FROM movie_rater.users WHERE first_name = '$firstname';";
+    $result3=pg_query($dbconn,$session_query);
+    $row3=pg_fetch_row($result3);
+    $_SESSION["user"]=$row3[0];
+     header("Location: http://localhost/MovieRater/views/movies.php");
+    exit;
+
       pg_free_result($result);
       pg_free_result($result2);
-      pg_free_result($result3);
       pg_close($dbconn);
   }
   if(array_key_exists('login', $_POST))
@@ -70,7 +70,6 @@
       die("Error in SQL query: " .pg_last_error());
     }
     $row2=pg_fetch_row($res2);
-    echo $row2[0];
     $_SESSION["user"]=$row2[0];
      header("Location: http://localhost/MovieRater/views/movies.php");
     exit;
