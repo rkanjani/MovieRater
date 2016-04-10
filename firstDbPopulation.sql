@@ -115,3 +115,11 @@ INSERT INTO WATCHES(user_id, movie_id, date_rated, rating) VALUES
 
 INSERT INTO PROFILE(user_id, age_range, date_of_birth, gender, device_used) VALUES
 (1, 20, '1996-06-03', 'm', 'Computer');
+
+INSERT INTO TAG (NAME) VALUES
+('Action'), ('Adventure'), ('Thriller'), ('Drama'), ('Romance'), ('Comedy'), ('Family'), 
+('Sci-Fi')
+
+INSERT INTO MOVIE_TAGS (movie_id, tag_id) VALUES
+(1,1),(1,2), (1,6), (2,1), (2,3), (3,1), (3,2), (3,8), (4,1), (4,2), (4,3), (5,4), (5,5),
+(6,4), (6,5), (7,4), (7,5), (7,6), (8,2), (8,6), (8,7), (9,1), (9,2), (9,8), (10,1), (10,8);
