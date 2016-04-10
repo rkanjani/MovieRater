@@ -30,12 +30,12 @@
     // search query that searches db for what the user entered
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
-       $flag = false;
 
        // collect value of input field
         $name = $_POST['isearch'];
       
-       $search_query="SELECT date_released, title, movie_id FROM movie_rater.movie  WHERE title LIKE '%" . $name . "%';";
+       $search_query="SELECT date_released, title, movie_id FROM movie_rater.movie  
+       WHERE title LIKE '%" . $name . "%';";
          $res=pg_query($dbconn,$search_query);
     
          }
