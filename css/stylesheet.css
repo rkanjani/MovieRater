@@ -151,6 +151,9 @@ body{
     font-size: 25px;
     right:30px;
 }
+.glyphicon-search{
+	font-size:14px !important;
+}
 .check-button{
 	right:30px;
 }
@@ -176,8 +179,10 @@ body{
 .rated{
 	z-index: 0;
 	position:absolute;
-	margin-top:21px;
+	margin-top:19px;
 	background-color: #f2f2f2;
+	right:210px;
+	max-width:37px;
 
 }
 .glyphicon{
@@ -195,27 +200,45 @@ body{
 
 .done{
 	z-index: 0;
-	right:265px;
-	margin-top:21px;
+	right:280px;
+	margin-top:19px;
 	background-color: #f2f2f2;
 	position:absolute
 }
 .profile{
 	z-index: 0;
-	right:335px;
-	margin-top:21px;
+	right:355px;
+	margin-top:19px;
 	background-color: #f2f2f2;
 	position:absolute
 }
 .logout{
 	z-index: 0;
 	left:60px;
-	margin-top:21px;
+	margin-top:12px;
 	background-color: #f2f2f2;
 	position:absolute
 }
+.logout-profile{
+	z-index: 0;
+	left:140px;
+	margin-top:12px;
+	background-color: #f2f2f2;
+	position:absolute
+}
+.go-back{
+	z-index: 0;
+	left:50px;
+	vertical-align: middle;
+	background-color: #f2f2f2;
+	position:absolute;
+	margin-top: 12px;
 
 
+}
+.md-36{
+	font-size:36px !important;
+}
 
 .overlay {
   position: fixed;
