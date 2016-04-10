@@ -1,0 +1,7 @@
+<html>
+<body>
+
+Name: <input type="text" name="name">
+
+</body>
+</html>
