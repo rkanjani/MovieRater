@@ -8,6 +8,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   </head>
 <?php
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
@@ -20,12 +21,26 @@
     }
     ?>
   <body>
+<?php 
+echo $_SERVER['PHP_SELF'];
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
-        <a class="btn btn-default logout" href="Logout.php">
-          <span class="glyphicon glyphicon-log-out"></span>
+        <a class="btn logout" href="Logout.php">
+          <i class="material-icons md-36">launch</i>
         </a>
+
 
         <h3 class="status"><i>Start Rating!</i></h3>
 
@@ -35,17 +50,17 @@
       <div class="col-md-6 name-column">
 	       <h1 class="name">MovieRater</h1>
 
-      <a class="btn btn-default profile" href="profile.php">
-        <span class="glyphicon glyphicon-user"></span>
+      <a class="profile" href="profile.php">
+       <i class="material-icons md-36">person</i>
       </a>
 
-      <button class="btn btn-default done">
-        <span class="glyphicon glyphicon-ok"></span>
-      </button>
+      <a class="done" href="#">
+        <i class="material-icons md-36">done</i>
+      </a>
 
-      <button class="btn btn-default rated">
-        <span class="glyphicon glyphicon-star"></span>
-      </button>
+      <a class="rated" href="#">
+        <i class="material-icons md-36">star_rate</i>
+      </a>
 
 
       <div class="col-sm-6 col-sm-offset-3">
@@ -56,7 +71,7 @@
                       <button type="submit">
                           <span class="glyphicon glyphicon-search"></span>
                       </button>  
-                  </span>
+                  </span>          
               </div>
           </div>
       </div>
@@ -64,6 +79,30 @@
     </div>
   </div>
   <div>
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                      Name: <input type="text" name="movie">
+                      <input type="submit">
+                  </form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $name = $_REQUEST['movie'];
+    
+     $query="SELECT date_released, title, movie_id FROM movie_rater.movie WHERE title LIKE '%" . $name . "%' ";
+     $res=pg_query($dbconn,$query);
+     while ($row=pg_fetch_array($result)){
+      $date_released = $row['date_released'];
+      $title = $row['title'];
+      $movie_id = $row['movie_id'];
+       //-display the result of the array
+      echo $date_released;
+      echo $title;
+      echo $movie_id;
+    }
+     
+}
+?>
 
 
     <!--Singluar Movie Genre - Needs to be looped -->
@@ -81,17 +120,21 @@
 <?php while ($row = pg_fetch_row($res)): 
       $movie_id = $row[2]?>
       <div class="movie-holder">
+        <a href="<?= "#"."popup".$movie_id ?>">
+
         <span class="movie">
 
-        <a href="<?= "#"."popup".$movie_id ?>">
+
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
-        </a>
 
         </span>
+
+                </a>
         <div id="<?= "popup".$movie_id ?>" class="overlay">
         <div class="popup">
         <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
+
         <a class="close" href="#">&times;</a>
         <div class="content">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
@@ -176,6 +219,21 @@
         </table>
             </p>
 
+
+            <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+              <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+              <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+              <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+              <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+              <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+              <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+              <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+              <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+              <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
+
+            <a name="trailer" href="https://www.youtube.com/watch?v=FyKWUTwSYAs" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
           </div>
         </div>
       </div>
@@ -209,6 +267,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../js/MovieController.js"></script>
     <script type="../js/bootstrap.js"></script>
+
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   </body>
 </html>
