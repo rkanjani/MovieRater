@@ -21,19 +21,7 @@
     }
     ?>
   <body>
-<?php 
-echo $_SERVER['PHP_SELF'];
-echo "<br>";
-echo $_SERVER['SERVER_NAME'];
-echo "<br>";
-echo $_SERVER['HTTP_HOST'];
-echo "<br>";
-echo $_SERVER['HTTP_REFERER'];
-echo "<br>";
-echo $_SERVER['HTTP_USER_AGENT'];
-echo "<br>";
-echo $_SERVER['SCRIPT_NAME'];
-?>
+
   <div id="header" class="container header">
   	<div class="row-fluid">
       <div class="col-md-6 logo-column">
@@ -78,7 +66,9 @@ echo $_SERVER['SCRIPT_NAME'];
     </div>
   </div>
   <div>
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+
+<!--This is supposed to be a search function -->
+<!--   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
                       Name: <input type="text" name="movie">
                       <input type="submit">
                   </form>
@@ -101,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
      
 }
-?>
+?> -->
 
 
     <!--Singluar Movie Genre - Needs to be looped -->
