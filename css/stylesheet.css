@@ -1,5 +1,3 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
 body{
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -151,9 +149,6 @@ body{
     font-size: 25px;
     right:30px;
 }
-.glyphicon-search{
-	font-size:14px !important;
-}
 .check-button{
 	right:30px;
 }
@@ -179,10 +174,8 @@ body{
 .rated{
 	z-index: 0;
 	position:absolute;
-	margin-top:19px;
+	margin-top:21px;
 	background-color: #f2f2f2;
-	right:210px;
-	max-width:37px;
 
 }
 .glyphicon{
@@ -200,45 +193,27 @@ body{
 
 .done{
 	z-index: 0;
-	right:280px;
-	margin-top:19px;
+	right:265px;
+	margin-top:21px;
 	background-color: #f2f2f2;
 	position:absolute
 }
 .profile{
 	z-index: 0;
-	right:355px;
-	margin-top:19px;
+	right:335px;
+	margin-top:21px;
 	background-color: #f2f2f2;
 	position:absolute
 }
 .logout{
 	z-index: 0;
 	left:60px;
-	margin-top:12px;
+	margin-top:21px;
 	background-color: #f2f2f2;
 	position:absolute
 }
-.logout-profile{
-	z-index: 0;
-	left:140px;
-	margin-top:12px;
-	background-color: #f2f2f2;
-	position:absolute
-}
-.go-back{
-	z-index: 0;
-	left:50px;
-	vertical-align: middle;
-	background-color: #f2f2f2;
-	position:absolute;
-	margin-top: 12px;
 
 
-}
-.md-36{
-	font-size:36px !important;
-}
 
 .overlay {
   position: fixed;
@@ -300,104 +275,6 @@ body{
 	white-space: normal;
 	margin-top:5px;
 }
-
-#content{
-	margin-left:0px;
-
-
-}
-.information{
-	padding-top:80px;
-	padding-left:0px;
-	vertical-align: middle;
-	border-right-style: solid;
-    border-width: 1px;
-    border-right-color: #cccccc;
-    height:90%;
-	
-}
-td{
-	padding:10px;
-	font-size: 30px;
-}
-.text_center{
-	text-align: center;
-}
-.information p{
-	font-size: 30px;
-	width:300px;
-}
-
-/* Star ratings for movies!!! */
-
-
-.rating {
-  border: none;
-  float: left;
-  padding-left: 35px;
-  width:100%;
-  padding-right:55px;
-
-}
-.trailer{
-	right:55px;
-	width:100%;
-
-}
-
-.rating > input {
-  display: none;
-}
-
-.rating > label:before {
-  margin: 5px;
-  font-size: 3em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before {
-  content: "\f089";
-  position: absolute;
-}
-
-.rating > label {
-  color: #ddd;
-  float: right;
-}
-
-/* show gold star when clicked */
-
-.rating > input:checked ~ label,
-
-
-/* hover current star */
-
-.rating:not(:checked) > label:hover,
-
-
-.rating:not(:checked) > label:hover ~ label {
-  color: #FFD700;
-}
-
-
-/* hover previous stars in list */
-
-.rating > input:checked + label:hover,
-
-/* hover current star when changing rating */
-
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-
-/* lighten current selection */
-
-.rating > input:checked ~ label:hover ~ label {
-  color: #FFED85;
-}
-
-
 
 a{
     color: #000000;
