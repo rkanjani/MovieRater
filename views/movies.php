@@ -162,48 +162,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
           <p class="directors">
              <b>Director(s):</b>
-             <table>
-                <tr>
               <?php while ($row2 = pg_fetch_row($res2)): ?>
-              <td><p><?php echo $row2[0]." ".$row2[1]; ?></p></td>
+                <p class="directors"><?php echo $row2[0]." ".$row2[1]; ?></p>
             <?php endwhile ?>
-          </tr>
-          </table>
 
             </p>
 
 
             <p class="actors">
               <b>Starring: </b>
-              <table>
-                <tr>
               <?php while ($row3 = pg_fetch_row($res3)): ?>
-              <td><p><?php echo $row3[0]." ".$row3[1]; ?> </p></td>
+              <p class="actors"><?php echo $row3[0]." ".$row3[1]; ?> </p>
             <?php endwhile ?>
-            </tr>
-          </table>
+
             </p>
 
             <p class="studio">
               <b>Produced by: </b>
-              <table>
-                <tr>
               <?php while ($row4 = pg_fetch_row($res4)): ?>
-              <td><p><?php echo $row4[0]; ?> </p></td>
+              <p class="studio"><?php echo $row4[0]; ?> </p>
             <?php endwhile ?>
-          </tr>
-        </table>
             </p>
 
             <p class="movie-description">
               <b>Synopsis: </b>
-              <table>
-              <tr>
               <?php while ($row5 = pg_fetch_row($res5)): ?>
-              <td><p><?php echo $row5[0]; ?> </p></td>
+              <p class="movie-description"><?php echo $row5[0]; ?> </p>
             <?php endwhile ?>
-          </tr>
-        </table>
             </p>
 
 
