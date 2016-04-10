@@ -1,7 +1,7 @@
 INSERT INTO MOVIE (title, date_released) VALUES
 ('Dead Pool', '2016-02-08'),
 ('London Has Fallen', '2016-03-01'),
-('Star Wars: The Force Awakens', '2015-12-14'),
+('Star Wars The Force Awakens', '2015-12-14'),
 ('World War Z', '2013-06-21'),
 ('Dirty Dancing', '1987-08-21'),
 ('The Notebook', '2004-06-25'),
@@ -11,26 +11,26 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('The Matrix', '1999-03-21');
 
 INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
-('Ryan', 'Reynolds', '1976-10-23'), //Deadpool
-('Morena', 'Baccarin', '1979-06-02'), //Deadpool
-('Gerard', 'Butler', '1969-11-12'), //London Has Fallen
-('Aaron', 'Eckhart', '1968-03-12'), //London Has Fallen
-('Daisy', 'Ridley', '1992-04-10'), //Star Wars Force Awakens
-('John', 'Boyega', '1992-03-17'), //Star Wars Force Awakens
-('Brad', 'Pitt', '1963-12-18'), //World War Z
-('Mireille', 'Enos', '1975-09-22'), //World War Z
-('Patrick', 'Swayze', '1952-02-18'), //Dirty Dancing
-('Jennifer', 'Grey', '1960-03-26'), //Dirty Dancing
-('Gena', 'Rowlands', '1930-06-19'), //The Notebook
-('James', 'Garner', '1928-04-07'), //The Notebook
-('Ellen', 'Page', '1987-02-21'), //Juno
-('Michael', 'Cera', '1988-06-07'), //Juno
-('Mike', 'Myers', '1963-05-25'), //Shrek
-('Eddie', 'Murphy', '1961-04-03'), //Shrek
-('Robert', 'Downey Jr', '1965-04-04'), //The Avengers
-('Chris', 'Evans', '1981-06-13'), //The Avengers
-('Keanu', 'Reeves', '1964-09-02'), //The Matrix
-('Laurence', 'Fishburne', '1961-07-30'); //The Matrix
+('Ryan', 'Reynolds', '1976-10-23'), 
+('Morena', 'Baccarin', '1979-06-02'), 
+('Gerard', 'Butler', '1969-11-12'), 
+('Aaron', 'Eckhart', '1968-03-12'), 
+('Daisy', 'Ridley', '1992-04-10'), 
+('John', 'Boyega', '1992-03-17'), 
+('Brad', 'Pitt', '1963-12-18'), 
+('Mireille', 'Enos', '1975-09-22'), 
+('Patrick', 'Swayze', '1952-02-18'),
+('Jennifer', 'Grey', '1960-03-26'), 
+('Gena', 'Rowlands', '1930-06-19'), 
+('James', 'Garner', '1928-04-07'), 
+('Ellen', 'Page', '1987-02-21'), 
+('Michael', 'Cera', '1988-06-07'), 
+('Mike', 'Myers', '1963-05-25'), 
+('Eddie', 'Murphy', '1961-04-03'), 
+('Robert', 'Downey Jr', '1965-04-04'), 
+('Chris', 'Evans', '1981-06-13'),
+('Keanu', 'Reeves', '1964-09-02'), 
+('Laurence', 'Fishburne', '1961-07-30'); 
 
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES

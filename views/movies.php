@@ -96,18 +96,86 @@
         <div class="content">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
           <div class="movie-info">
-            <p class="directors">
-              <b>Director(s):</b> Tim Miller
+            <!-- populating the required fields with database data-->
+              <?php 
+              $director_query="SELECT first_name, last_name FROM movie_rater.director d, 
+    movie_rater.directs ds, movie_rater.movie m WHERE d.director_id=ds.director_id
+    AND m.movie_id='$row[2]'AND ds.movie_id=m.movie_id;";
+     $res2=pg_query($dbconn,$director_query);
+    if(!$res2){
+      die("Error in SQL query: " .pg_last_error());
+    }
+
+    $actor_query="SELECT first_name, last_name FROM movie_rater.actor a,
+    movie_rater.actor_plays ap, movie_rater.movie m WHERE m.movie_id = '$row[2]' AND
+    m.movie_id=ap.movie_id AND ap.actor_id=a.actor_id;";
+    $res3=pg_query($dbconn,$actor_query);
+    if(!$res3){
+      die("Error in SQL query: " .pg_last_error());
+    }
+
+    $studio_query="SELECT name FROM movie_rater.studio s, movie_rater.sponsors sp,
+    movie_rater.movie m WHERE m.movie_id='$row[2]' AND m.movie_id = sp.movie_id AND
+    sp.studio_id = s.studio_id;";
+    $res4=pg_query($dbconn,$studio_query);
+    if(!$res4){
+      die("Error in SQL query: " .pg_last_error());
+    }
+
+    $topic_query="SELECT description FROM movie_rater.topics t, movie_rater.movie_topics mt,
+    movie_rater.movie m WHERE m.movie_id='$row[2]' AND m.movie_id = mt.movie_id AND
+    mt.topic_id = t.topic_id;";
+    $res5=pg_query($dbconn,$topic_query);
+    if(!$res5){
+      die("Error in SQL query: " .pg_last_error());
+    }
+    ?>
+          <p class="directors">
+             <b>Director(s):</b>
+             <table>
+                <tr>
+              <?php while ($row2 = pg_fetch_row($res2)): ?>
+              <td><p><?php echo $row2[0]." ".$row2[1]; ?></p></td>
+            <?php endwhile ?>
+          </tr>
+          </table>
+
             </p>
+
+
             <p class="actors">
-              <b>Starring: </b> Ryan Reynolds, Morena Baccarin, T.J. Miller
+              <b>Starring: </b>
+              <table>
+                <tr>
+              <?php while ($row3 = pg_fetch_row($res3)): ?>
+              <td><p><?php echo $row3[0]." ".$row3[1]; ?> </p></td>
+            <?php endwhile ?>
+            </tr>
+          </table>
             </p>
+
             <p class="studio">
-              <b>Produced by: </b>Twentieth Century Fox Film Corporation
+              <b>Produced by: </b>
+              <table>
+                <tr>
+              <?php while ($row4 = pg_fetch_row($res4)): ?>
+              <td><p><?php echo $row4[0]; ?> </p></td>
+            <?php endwhile ?>
+          </tr>
+        </table>
             </p>
+
             <p class="movie-description">
-              <b>Synopsis: </b>A former Special Forces operative turned mercenary is subjected to a rogue experiment that leaves him with accelerated healing powers, adopting the alter ego Deadpool.
+              <b>Synopsis: </b>
+              <table>
+              <tr>
+              <?php while ($row5 = pg_fetch_row($res5)): ?>
+              <td><p><?php echo $row5[0]; ?> </p></td>
+            <?php endwhile ?>
+          </tr>
+        </table>
             </p>
+
           </div>
         </div>
       </div>
