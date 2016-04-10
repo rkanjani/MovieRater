@@ -111,7 +111,7 @@ INSERT INTO USERS(first_name, last_name, email, username, password) VALUES
 ('Tyler', 'Metade', 'tyler@email.com', 'tmetade', 'password');
 
 INSERT INTO WATCHES(user_id, movie_id, date_rated, rating) VALUES
-(1, 1, '2016-04-06', 10);
+(1, 1, '2016-04-06', 5);
 
 INSERT INTO PROFILE(user_id, age_range, date_of_birth, gender, device_used) VALUES
 (1, 20, '1996-06-03', 'm', 'Computer');
