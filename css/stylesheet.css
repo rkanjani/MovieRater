@@ -263,7 +263,7 @@ body{
   border-radius: 5px;
   width: 45%;
   position: relative;
-  transition: all 5s ease-in-out;
+
 }
 
 .popup h2 {
@@ -274,7 +274,6 @@ body{
   position: absolute;
   top: 20px;
   right: 30px;
-  transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
