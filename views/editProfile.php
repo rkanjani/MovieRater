@@ -57,6 +57,7 @@
     if(!$result){
       die("Error in SQL query: " .pg_last_error());
     }
+    header("Location: http://localhost/MovieRater/views/profile.php");
     }
 
   ?>
