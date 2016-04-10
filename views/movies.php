@@ -200,27 +200,7 @@
             </fieldset> 
             <input type="submit" name="rating" value="Rate"/>
           </form>
-          <?php 
-          if ($_POST['rating'] == "Rate")
-          {
-           $rating = $_POST['irating'];
-           $date = getDate();
-           echo ($date[mday]);
-           $movie_name = $row[1];
-           echo ($movie_name);
-             // $insertPG = "INSERT INTO rating (user_id, movie_id, date_rated, rating)
-             // VALUES ('$_SESSION['user']', '$movie_id', '$date', '$rating')";
-           echo($rating);
-           $rating_query="SELECT rating FROM m.watches WHERE rating = $rating";
-           $rating_result=pg_query($dbconn,$rating_query);
-           while($row=mysql_fetch_array($result)){
-             $UserID  =$row['user_id'];
-             $MovieID=$row['movie_id'];
-             $DateRated=$row['ExamBoard'];
-             echo ($userID);
-           }
-         }
-         ?>
+
 
             <a name="trailer" href="https://www.youtube.com/watch?v=FyKWUTwSYAs" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
           </div>
