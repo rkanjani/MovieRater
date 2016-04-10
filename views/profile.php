@@ -31,6 +31,10 @@
     }
     $row2=pg_fetch_row($res2);
 
+    if(array_key_exists('edit', $_POST)){
+    header("Location: http://localhost/MovieRater/views/editProfile.php");
+    }
+
   ?>
   <body>
     <div id="header" class="container header">
@@ -58,6 +62,8 @@
       <div class="col-md-5">
         <div class="information">
         <h2 style="padding-left:50px;"><u> Account Information</u></h2>
+         <form method="post" action="">
+        <input type="submit" name="edit" value="Edit" class="btn btn-default submit"/>
           <table>
             <tr>
               <td> Name </td>
@@ -135,6 +141,7 @@
                 
               </tr>
           </table>
+        </form>
       </div>
     </div>
 
