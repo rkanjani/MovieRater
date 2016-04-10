@@ -8,6 +8,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   </head>
   <?
   session_start();
@@ -36,7 +37,13 @@
     if(!$result2){
       die("Error in SQL query: " .pg_last_error());
     }
-    echo "Data Successfully Entered";
+    $session_query="SELECT user_id FROM movie_rater.users WHERE first_name = '$firstname';";
+    $result3=pg_query($dbconn,$session_query);
+    $row3=pg_fetch_row($result3);
+    $_SESSION["user"]=$row3[0];
+     header("Location: http://localhost/MovieRater/views/movies.php");
+    exit;
+
       pg_free_result($result);
       pg_free_result($result2);
       pg_close($dbconn);
@@ -63,7 +70,6 @@
       die("Error in SQL query: " .pg_last_error());
     }
     $row2=pg_fetch_row($res2);
-    echo $row2[0];
     $_SESSION["user"]=$row2[0];
      header("Location: http://localhost/MovieRater/views/movies.php");
     exit;
