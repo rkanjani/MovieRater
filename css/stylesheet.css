@@ -248,11 +248,11 @@ body{
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
-  display: none;
+  visibility: hidden;
   opacity: 0;
 }
 .overlay:target {
-  display: block;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -345,7 +345,7 @@ td{
 .trailer{
 	right:55px;
 	width:100%;
-	background-color: #FAF26F;
+
 }
 
 .rating > input {
@@ -409,7 +409,4 @@ a{
 * {
   margin: 0px;
 }
-
-
-
 
