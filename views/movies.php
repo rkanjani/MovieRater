@@ -9,12 +9,14 @@
     <link href="../css/stylesheet.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    
+</script>
   </head>
 <?php
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
 
-    $tag_query="SELECT name, tag_id FROM movie_rater.tag;";
+    $tag_query="SELECT name, tag_id FROM movie_rater.tag ORDER BY name ASC;";
     $tag_res=pg_query($dbconn,$tag_query);
     if(!$tag_res){
       die("Error in SQL query: " .pg_last_error());
@@ -71,25 +73,9 @@
                       <input type="submit">
                   </form>
 
-<!--<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // collect value of input field
-    $name = $_REQUEST['movie'];
-    
-     $query="SELECT date_released, title, movie_id FROM movie_rater.movie WHERE title LIKE '%" . $name . "%' ";
-     $res=pg_query($dbconn,$query);
-     while ($row=pg_fetch_array($result)){
-      $date_released = $row['date_released'];
-      $title = $row['title'];
-      $movie_id = $row['movie_id'];
-       //-display the result of the array
-      echo $date_released;
-      echo $title;
-      echo $movie_id;
-    }
-     
-}
-?>-->
+<?php
+
+?>
 
 
     <?php while ($tag_row = pg_fetch_row($tag_res)): ?>
@@ -109,6 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!$res){
       die("Error in SQL query: " .pg_last_error());
     }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $name = $_REQUEST['movie'];
+    
+     $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
+    movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND 
+    title LIKE '%" . $name . "%';";
+     $res=pg_query($dbconn,$query);
+}
 
       ?>
 
@@ -199,19 +194,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endwhile ?>
             </p>
 
+            <form action="" method="post">
+            <fieldset class="rating"> 
+              <input type="radio" id="star5" name="irating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+              <input type="radio" id="star4half" name="irating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+              <input type="radio" id="star4" name="irating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+              <input type="radio" id="star3half" name="irating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+              <input type="radio" id="star3" name="irating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+              <input type="radio" id="star2half" name="irating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+              <input type="radio" id="star2" name="irating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+              <input type="radio" id="star1half" name="irating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+              <input type="radio" id="star1" name="irating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+              <input type="radio" id="starhalf" name="irating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset> 
+            <input type="submit" name="rating" value="Rate"/>
+          </form>
 
-            <fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-              <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-            </fieldset>
 
             <a name="trailer" href="https://www.youtube.com/watch?v=FyKWUTwSYAs" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
           </div>
