@@ -133,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div id="<?= "popup".$movie_id ?>" class="overlay">
         <div class="popup">
         <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
+
         <a class="close" href="#">&times;</a>
         <div class="content">
           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
@@ -162,6 +163,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
               <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
             </fieldset>
+
+            <a name="trailer" href="https://www.youtube.com/watch?v=FyKWUTwSYAs" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
+
 
           </div>
         </div>

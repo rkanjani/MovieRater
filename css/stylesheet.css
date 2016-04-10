@@ -335,7 +335,14 @@ td{
   border: none;
   float: left;
   padding-left: 35px;
-  padding-top: 10px;
+  width:100%;
+  padding-right:55px;
+
+}
+.trailer{
+	right:55px;
+	width:100%;
+
 }
 
 .rating > input {
