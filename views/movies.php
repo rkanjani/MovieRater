@@ -21,6 +21,7 @@
     if(!$tag_res){
       die("Error in SQL query: " .pg_last_error());
     }
+
     ?>
   <body>
   <div id="header" class="container header">
@@ -53,13 +54,15 @@
 
 
       <div class="col-sm-6 col-sm-offset-3">
+        <form action='<?php echo $_SERVER['PHP_SELF'];?>' method='post'>
           <div id="search-container"> 
               <div class="input-group stylish-input-group">
-                  <input type="text" class="form-control"  placeholder="Search" >
+                  <input type="text" class="form-control"  name="isearch" placeholder="Search" >
                   <span class="input-group-addon">
-                      <button type="submit">
-                          <span class="glyphicon glyphicon-search"></span>
-                      </button>  
+                      <button type="submit" name'search'>
+                          <span class="glyphicon glyphicon-search"></span> 
+                        </button>
+                    </form>
                   </span>          
               </div>
           </div>
@@ -68,16 +71,7 @@
     </div>
   </div>
   <div>
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-                      Name: <input type="text" name="movie">
-                      <input type="submit">
-                  </form>
-
-<?php
-
-?>
-
-
+  
     <?php while ($tag_row = pg_fetch_row($tag_res)): ?>
     <div id="movie-container" class="container-fluid movie-container">
 
@@ -95,15 +89,15 @@
     if(!$res){
       die("Error in SQL query: " .pg_last_error());
     }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // collect value of input field
-    $name = $_REQUEST['movie'];
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     // collect value of input field
+     $name = $_POST['isearch'];
     
-     $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
-    movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND 
-    title LIKE '%" . $name . "%';";
-     $res=pg_query($dbconn,$query);
-}
+   $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,     movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND 
+   title LIKE '%" . $name . "%';";
+      $res=pg_query($dbconn,$query);
+    
+ }
 
       ?>
 
