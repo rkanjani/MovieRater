@@ -51,7 +51,7 @@
        <i class="material-icons md-36">person</i>
       </a>
 
-      <a id="done-rated" class="done" href="#">
+      <a id="done-rated" class="done" href="recommendations.php">
         <i class="material-icons md-36">done</i>
       </a>
 
@@ -111,25 +111,24 @@
     <div class="row-fluid no-margins movie-row">
       <div class="col-md-2 inherit-height">
         <span>
-          <img class="img-rated" src="../img/<?php echo $movie_row[0] ?>.jpg" height=295>
+          <img class="img-rated" src="../img/<?php echo $movie_row[0] ?>.jpg" height=295 width=203>
         </span>
       </div>
       <div class="col-md-10 inherit-height">
         <h1><?php echo $movie_row[0]." (". $year[0].")"?></h1>  
 
-        <h3><b>Director(s):</b> 
+        <h4><b>Director(s):</b> 
           <p><?php while ($director_row = pg_fetch_row($director_res)): ?>
                 <?php echo $director_row[0]." ".$director_row[1]; ?></p>
-            <?php endwhile ?></h3>
+            <?php endwhile ?></h4>
 
-        <h3><b>Starring:</b>
-         <?php while ($actor_row = pg_fetch_row($actor_res)): ?>
-              <p><?php echo $actor_row[0]." ".$actor_row[1]; ?> </p>
-            <?php endwhile ?></h3>
+        <h4><b>Starring:</b><?php while ($actor_row = pg_fetch_row($actor_res)): ?>
+            <p><?php echo $actor_row[0]." ".$actor_row[1]; ?> </p>
+            <?php endwhile ?></h4>
 
-        <h3><b>Synopsis:</b> <?php echo $topic_row[0] ?></h3>
+        <h4><b>Synopsis:</b> <?php echo $topic_row[0] ?></h4>
        
-        <h3><b>Rating:</b> <?php echo $watched_row[2] ."/10" ?></h3>
+        <h2><b>Rating:</b> <?php echo $watched_row[2] ."/10" ?></h2>
       </div>
     </div>
 
