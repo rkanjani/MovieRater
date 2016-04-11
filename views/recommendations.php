@@ -18,8 +18,7 @@
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     
     $user=$_SESSION['user'];
-    //to check what query should be used to populate page
-    $flag = true;
+    
 
     //selects all tags in db
     $tag_query="SELECT name, tag_id FROM movie_rater.tag ORDER BY name ASC;";
@@ -28,35 +27,33 @@
       die("Error in SQL query: " .pg_last_error());
     }
 
-    //search query that searches db for what the user entered
-    // if ($_SERVER["REQUEST_METHOD"] == "GET") {
-       
+    $the_query="SELECT movie_rater.movie_tags.tag_id, AVG(movie_rater.watches.rating), COUNT(movie_rater.watches.rating) FROM movie_rater.movie
+      INNER JOIN movie_rater.movie_tags
+      ON movie_rater.movie.movie_id=movie_rater.movie_tags.movie_id
+      INNER JOIN movie_rater.watches
+      ON movie_rater.movie.movie_id=movie_rater.watches.movie_id AND movie_rater.watches.user_id='$user'
+      GROUP BY movie_rater.movie_tags.tag_id
+      ORDER BY tag_id;";
+    $the_query_res=pg_query($dbconn, $the_query);
+    if(!$the_query){
+      die("Error in SQL query: " .pg_last_error());
+    }
 
-    //    // collect value of input field
-    //     $name = $_POST['isearch'];
-      
-    //    $search_query="SELECT date_released, title, movie_id FROM movie_rater.movie  
-    //    WHERE title LIKE '%" . $name . "%';";
-    //      $res=pg_query($dbconn,$search_query);
-    
-    //      }
+    while($the_query_row=pg_fetch_row($the_query_res)):
 
-    if(array_key_exists('srating', $_POST)){
-         $movie_id=$_POST['imovie_id'];
-         $rating=$_POST['irating'.$movie_id];
-         $date=getdate();
-         $date_watched=$date['year']."-".$date['mon']."-".$date['mday'];
+      $movie_tag = $the_query_row[0];
+      $average = $the_query_row[1];
+      $numOfRatings = $the_query_row[2];
 
-        $rating_query="INSERT INTO movie_rater.watches(user_id, movie_id, date_rated, rating)
-         VALUES ('$user', '$movie_id', '$date_watched', '$rating')";
-        $rating_res=pg_query($dbconn,$rating_query);
-        if(!$rating_res){
-          die("Error in SQL query: " .pg_last_error());
-        }
-      }
-                    
-              
-    ?>
+      $numOfMovies = $average+$numOfRatings;
+
+      echo "For Genre #".$movie_tag." grab ".(int)$numOfMovies;
+
+      while($numOfMovies>0):?>
+
+
+    <?php endwhile 
+  endwhile ?>
 
   <body>
     <div id="header" class="container header">
