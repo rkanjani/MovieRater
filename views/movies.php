@@ -117,13 +117,10 @@
 
 
 
-<<<<<<< HEAD
-                      // only displays tags with movies associated with it
-                      if($checkTag_row!=0):
-=======
+
                 // only displays tags with movies associated with it
                 if($checkTag_row!=0):
->>>>>>> master
+
                   
                     // selects all the movies that are associate with the above tag
                     $query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,

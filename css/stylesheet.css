@@ -132,12 +132,23 @@ margin-top:20px;
 	overflow-y: hidden;
 	white-space: nowrap;
 }
+.movie-listing-recc{
+	height:42%;
+	background-color: #747474;
+	margin-right: -15px;
+	margin-left: -15px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	padding-left:20px;
+}
 .movie-holder{
 	margin-top:17px;
 	display: inline-block;
 	width:180px;
-
-
+}
+#genre-name{
+	padding-left: 20px;
 }
 .movie{
     margin: 0 auto;
