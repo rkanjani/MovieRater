@@ -184,7 +184,7 @@
                 <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
 
 
-            <!-- populating the required fields with database data-->
+              <!-- populating the required fields with database data-->
               <?php 
                         $director_query="SELECT first_name, last_name FROM movie_rater.director d, 
               movie_rater.directs ds, movie_rater.movie m WHERE d.director_id=ds.director_id
@@ -239,7 +239,7 @@
           <a class="close" href="#">&times;</a>
           <div class="content">
           
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;">
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 width=170 style="float:left;">
           <!--<img class="completed" src="<?php //echo $image?>" width=148></img>-->
           <div class="movie-info">
 
