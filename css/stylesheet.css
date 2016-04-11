@@ -175,7 +175,12 @@ body{
 	background-color: #f2f2f2;
 	z-index: 0;
 }
-.form-control{
+#search-block{
+		margin-top: 20px;
+    margin-left: 415px;
+    width: 250px;
+        position: absolute;
+
 }
 .stylish-input-group button{
     border:0;

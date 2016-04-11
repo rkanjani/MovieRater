@@ -41,22 +41,23 @@
     
     //      }
 
-                  if(array_key_exists('srating', $_POST)){
-                     $rating=$_POST['irating'];
-                     $movie_id=$_POST['imovie_id'];
-                     $date=getdate();
-                     $date_watched=$date['year']."-".$date['mon']."-".$date['mday'];
+    if(array_key_exists('srating', $_POST)){
+         $rating=$_POST['irating'];
+         $movie_id=$_POST['imovie_id'];
+         $date=getdate();
+         $date_watched=$date['year']."-".$date['mon']."-".$date['mday'];
 
-                  $rating_query="INSERT INTO movie_rater.watches(user_id, movie_id, date_rated, rating)
-                   VALUES ('$user', '$movie_id', '$date_watched', '$rating')";
-                    $rating_res=pg_query($dbconn,$rating_query);
-                if(!$rating_res){
-                  die("Error in SQL query: " .pg_last_error());
-                }
-                    }
+        $rating_query="INSERT INTO movie_rater.watches(user_id, movie_id, date_rated, rating)
+         VALUES ('$user', '$movie_id', '$date_watched', '$rating')";
+        $rating_res=pg_query($dbconn,$rating_query);
+        if(!$rating_res){
+          die("Error in SQL query: " .pg_last_error());
+        }
+      }
                     
               
     ?>
+
   <body>
   <div id="header" class="container header">
   	<div class="row-fluid">
@@ -88,11 +89,11 @@
 
 
 
-      <div class="col-sm-6 col-sm-offset-3">
+      <div id="search-block" class="col-md-12">
         <form action='<?php echo $_SERVER['PHP_SELF'];?>' method='get'>
 
           <div id="search-container"> 
-              <div class="input-group stylish-input-group">
+              <div  class="input-group stylish-input-group">
                   <input type="text" class="form-control"  name="isearch" placeholder="Search" >
                   <span class="input-group-addon">
                       <button type="submit" name'search'>
@@ -259,21 +260,13 @@
             <a name="trailer" href="https://www.youtube.com/watch?v=Deadpool" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
         </div>
        
+        </div>
       </div>
     </div>
-      </div>
-
 
 
       <!--ends movie loop -->
     <?php endwhile ?>
-
-
-
-
-
-
-
 
 
       <!--Ends here-->  
@@ -287,15 +280,7 @@
 
   <?php endwhile ?>
 
-
-
-
   </div>
-
-    
-
-
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
