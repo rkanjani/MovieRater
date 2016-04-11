@@ -80,7 +80,7 @@
       // selects movies from the above tag and the ones that are the movst rated
       $movie_query = "SELECT m.title, m.date_released, m.movie_id, w.rating FROM movie_rater.movie m,
      movie_rater.tag t, movie_rater.movie_tags mt, movie_rater.watches w WHERE t.tag_id = '$tag_row[1]'
-      AND t.tag_id = mt.tag_id AND mt.movie_id =  m.movie_id AND m.movie_id = w.movie_id ORDER BY w.rating DESC;";
+      AND t.tag_id = mt.tag_id AND mt.movie_id =  m.movie_id AND NOT m.movie_id = w.movie_id ORDER BY w.rating DESC;";
       $movie_res=pg_query($dbconn,$movie_query);
     if(!$movie_res){
       die("Error in SQL query: " .pg_last_error());
