@@ -79,7 +79,7 @@
        <i class="material-icons md-36">person</i>
       </a>
 
-      <a class="done" href="#">
+      <a class="done" href="recommendations.php">
         <i class="material-icons md-36">done</i>
       </a>
 
@@ -131,12 +131,12 @@
                   //flag will change to false once the user searchs to change to the search query
                   if($flag==true){
 
-                  // selects all the movies that are associate with the above tag
-                  $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
-                movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
-                  $res=pg_query($dbconn,$query);
-                  if(!$res){
-                    die("Error in SQL query: " .pg_last_error());
+                    // selects all the movies that are associate with the above tag
+                    $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
+                  movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
+                    $res=pg_query($dbconn,$query);
+                    if(!$res){
+                      die("Error in SQL query: " .pg_last_error());
                     }
                   }
             ?>
@@ -152,6 +152,22 @@
             <div class="movie-holder">
                       <a href="<?= "#"."popup".$movie_id ?>">
                         <span class="movie">
+
+                        <?php
+
+                          $watched_query="SELECT rating FROM movie_rater.watches w WHERE w.movie_id='$movie_id' AND w.user_id= '$user';";
+                           $watched_res=pg_query($dbconn,$watched_query);
+                          if(!$watched_res){
+                            die("Error in SQL query: " .pg_last_error());
+                          }
+                          if(pg_num_rows($watched_res)==1){
+                            $image = "../img/stamp.png";
+                          }
+                          else{
+                            $image = "../img/transparent.png";
+                          }
+                        ?>
+                          <img class="completed" src="<?php echo $image?>" width=148>
                           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
                           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
                         </span>
@@ -160,10 +176,7 @@
                   <div class="popup">
                 <h2><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h2>
 
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
-          <div class="movie-info">
+
             <!-- populating the required fields with database data-->
               <?php 
                         $director_query="SELECT first_name, last_name FROM movie_rater.director d, 
@@ -203,7 +216,24 @@
                 if(!$watchedres){
                   die("Error in SQL query: " .pg_last_error());
                 }
+
+                if(pg_num_rows($watchedres)==1){
+                  $image = "../img/stamp.png";
+                }
+                else{
+                  $image = "../img/transparent.png";
+                }
+
                 ?>
+
+
+
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+          <img class="completed" src="<?php echo $image?>" width=148>
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
+          <div class="movie-info">
+
           <p class="directors">
              <b>Director(s):</b>
               <?php while ($row2 = pg_fetch_row($res2)): ?>
@@ -234,12 +264,9 @@
               <p class="movie-description"><?php echo $row5[0]; ?> </p>
             <?php endwhile ?>
             </p>
-
-
-          
-
           </div>
-            <form action="" method="post">
+
+            <form action="" style="<?= (pg_num_rows($watchedres)==1)?"display:none;" : "display:block;"?>" method="post">
                 <fieldset class="rating">
                     <input type="radio" id="<?= "star5#".$movie_id?>" name="<?="irating".$movie_id?>" value="10" /><label class = "full" for="<?= "star5#".$movie_id?>" title="Awesome - 5 stars"></label>
                     <input type="radio" id="<?= "star4.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="9" /><label class="half" for="<?= "star4.5#".$movie_id?>" title="Pretty good - 4.5 stars"></label>
@@ -286,9 +313,7 @@
 
   </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../js/MovieController.js"></script>
     <script type="../js/bootstrap.js"></script>
 
 
