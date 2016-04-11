@@ -60,6 +60,26 @@
     header("Location: http://localhost/MovieRater/views/profile.php");
     }
 
+     if(array_key_exists('delete', $_POST)){
+      // delete the foriegn keys first then I can delete user
+            $deletew_query="DELETE FROM movie_rater.watches WHERE user_id='$user';";
+              $deletew_res=pg_query($dbconn,$deletew_query);
+                if(!$deletew_res){
+                  die("Error in SQL query: " .pg_last_error());
+                }
+          $deletep_query="DELETE FROM movie_rater.profile WHERE user_id='$user';";
+            $deletep_res=pg_query($dbconn,$deletep_query);
+              if(!$deletep_res){
+                die("Error in SQL query: " .pg_last_error());
+              }
+          $deleteu_query="DELETE FROM movie_rater.users WHERE user_id='$user';";
+            $deleteu_res=pg_query($dbconn,$deleteu_query);
+              if(!$deleteu_res){
+                die("Error in SQL query: " .pg_last_error());
+              }
+              header("Location: http://localhost/MovieRater/views/Logout.php");
+     }
+
   ?>
   <body>
     <div id="header" class="container header">
@@ -165,6 +185,10 @@
                       <input type="submit" name="save" value="Save" class="btn btn-default submit"/>
 
         </form>
+
+          <form action="" method="post">
+        <input type="submit" name="delete" value="Delete Profile" class="btn btn-default submit"/>
+      </form>
       </div>
     </div>
 
