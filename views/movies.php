@@ -13,10 +13,11 @@
 </script>
   </head>
 <?php
-
+  session_start();
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     
+    $user=$_SESSION['user'];
     //to check what query should be used to populate page
     $flag = true;
 
@@ -27,18 +28,34 @@
       die("Error in SQL query: " .pg_last_error());
     }
 
-    // search query that searches db for what the user entered
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //search query that searches db for what the user entered
+    // if ($_SERVER["REQUEST_METHOD"] == "GET") {
        
 
-       // collect value of input field
-        $name = $_POST['isearch'];
+    //    // collect value of input field
+    //     $name = $_POST['isearch'];
       
-       $search_query="SELECT date_released, title, movie_id FROM movie_rater.movie  
-       WHERE title LIKE '%" . $name . "%';";
-         $res=pg_query($dbconn,$search_query);
+    //    $search_query="SELECT date_released, title, movie_id FROM movie_rater.movie  
+    //    WHERE title LIKE '%" . $name . "%';";
+    //      $res=pg_query($dbconn,$search_query);
     
-         }
+    //      }
+
+                  if(array_key_exists('srating', $_POST)){
+                     $rating=$_POST['irating'];
+                     $movie_id=$_POST['imovie_id'];
+                     $date=getdate();
+                     $date_watched=$date['year']."-".$date['mon']."-".$date['mday'];
+
+                  $rating_query="INSERT INTO movie_rater.watches(user_id, movie_id, date_rated, rating)
+                   VALUES ('$user', '$movie_id', '$date_watched', '$rating')";
+                    $rating_res=pg_query($dbconn,$rating_query);
+                if(!$rating_res){
+                  die("Error in SQL query: " .pg_last_error());
+                }
+                    }
+                    
+              
     ?>
   <body>
   <div id="header" class="container header">
@@ -70,8 +87,10 @@
       </a>
 
 
-      <div class="search-container">
-        <form action='<?php echo $_SERVER['PHP_SELF'];?>' method='post'>
+
+      <div class="col-sm-6 col-sm-offset-3">
+        <form action='<?php echo $_SERVER['PHP_SELF'];?>' method='get'>
+
           <div id="search-container"> 
               <div class="input-group stylish-input-group">
                   <input type="text" class="form-control"  name="isearch" placeholder="Search" >
@@ -177,6 +196,12 @@
                 if(!$res5){
                   die("Error in SQL query: " .pg_last_error());
                 }
+
+                $watched_query="SELECT rating FROM movie_rater.watches WHERE movie_id='$row[2]' AND user_id= '$user'; ";
+                $watchedres=pg_query($dbconn,$watched_query);
+                if(!$watchedres){
+                  die("Error in SQL query: " .pg_last_error());
+                }
                 ?>
           <p class="directors">
              <b>Director(s):</b>
@@ -209,29 +234,36 @@
             <?php endwhile ?>
             </p>
 
-            <form action="" method="post">
-            <fieldset class="rating"> 
-              <input type="radio" id="star5" name="irating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4half" name="irating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio" id="star4" name="irating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3half" name="irating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio" id="star3" name="irating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2half" name="irating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio" id="star2" name="irating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1half" name="irating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio" id="star1" name="irating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-              <input type="radio" id="starhalf" name="irating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-            </fieldset> 
-            <input type="submit" name="rating" value="Rate"/>
+
+          
+
+          </div>
+           <!--  <fieldset class="rating" form="rate">  -->
+              <form action="" method="post">
+             <!-- <input type="radio"  name="irating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+              <input type="radio"  name="irating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+              <input type="radio"  name="irating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+              <input type="radio"  name="irating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+              <input type="radio"  name="irating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+              <input type="radio"  name="irating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+              <input type="radio"  name="irating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+              <input type="radio"  name="irating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+              <input type="radio"  name="irating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+              <input type="radio"  name="irating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
+            <!-- </fieldset>  -->
+            <input type="text" name="imovie_id" value="<?php echo $row[2]; ?>" />
+            <input type="text" name="irating"></input>
+            <input type="submit" name="srating" value="Rate"/>
           </form>
 
-
-            <a name="trailer" href="https://www.youtube.com/watch?v=FyKWUTwSYAs" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
-          </div>
+            <a name="trailer" href="https://www.youtube.com/watch?v=Deadpool" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
         </div>
+       
       </div>
     </div>
       </div>
+
+
 
       <!--ends movie loop -->
     <?php endwhile ?>
@@ -252,7 +284,9 @@
 
     <!--ends tag check and loop -->
   <?php endif ?>
+
   <?php endwhile ?>
+
 
 
 
