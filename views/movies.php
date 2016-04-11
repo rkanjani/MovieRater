@@ -124,12 +124,14 @@
                   
                     // selects all the movies that are associate with the above tag
                     $query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
-                  movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
-                    $res=pg_query($dbconn,$query);
+                       movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
+                      $res=pg_query($dbconn,$query);
 
                     if(!$res){
                       die("Error in SQL query: " .pg_last_error());
-                  }
+                     }
+
+                  //gets called once the user searhes
                    if ($_SERVER["REQUEST_METHOD"] == "GET") { 
                     error_reporting(E_ALL ^ E_NOTICE);  
                      // collect value of input field
