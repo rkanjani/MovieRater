@@ -124,7 +124,7 @@ margin-top:20px;
 	white-space: nowrap;
 }
 .movie-listing{
-	height:42%;
+	height:44%;
 	background-color: #747474;
 	margin-right: -15px;
 	margin-left: -15px;
@@ -147,6 +147,10 @@ margin-top:20px;
 	display: inline-block;
 	width:180px;
 }
+.movie-holder-recc{
+	display: inline-block;
+	width:180px;
+}
 #genre-name{
 	padding-left: 20px;
 }
@@ -156,6 +160,13 @@ margin-top:20px;
     float:left;
 
 	margin-left: 13%;
+}
+.movie-recc{
+	margin: 0 auto;
+    text-align: center;
+    float: left;
+    margin-left: 13%;
+    margin-top: 20px;
 }
 .glyphicon-check{
 	position:absolute;
@@ -301,7 +312,11 @@ margin-top:20px;
   border-radius: 5px;
   width: 45%;
   position: relative;
+  height: 460px;
+}
+#popup-recc {
 
+  height: 400px;
 }
 
 .popup h2 {
