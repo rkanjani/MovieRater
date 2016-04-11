@@ -8,7 +8,7 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('Juno', '2007-12-25'),
 ('Shrek', '2001-05-18'),
 ('The Avengers', '2012-05-12'),
-('The Matrix', '1999-03-21'), 
+('The Matrix', '1999-03-21'), -- 10
 ('Fight Club', '1999-10-15'), 
 ('Step Brothers', '2008-07-25'),
 ('A Nightmare on Elm Street', '1984-11-16'),
@@ -18,19 +18,28 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('The Dark Knight', '2008-07-18'),
 ('Legend', '2015-11-20'),
 ('Talladega Nights', '2006-08-04'),
-('American History X', '1998-11-20'), --Rohan below
-{'Inside Out', '2015-06-19'},
-{'Up', '2005-05-29'},
-{'Hangover 1', '2009-06-05'},
-{'Hangover 2', '2011-05-26'},
-{'Hangover 3', '2013-05-23'},
-{'Toy Story 1', '1995-11-22'},
-{'Toy Story 2', '1999-11-24'},
-{'Toy Story 3', '2010-06-18'},
-{'Monsters Inc', '2001-11-02'},
-{'Finding Nemo', '2003-05-30'},
-{'The Haunting in Connecticut', '2009-03-27'},
-{'The Strangers', '2008-05-30'};
+('American History X', '1998-11-20'), --Rohan below -- 20
+{'Inside Out', '2015-06-19'}, 21
+{'Hangover 1', '2009-06-05'}, 22
+{'Hangover 2', '2011-05-26'}, 23
+{'Hangover 3', '2013-05-23'}, 24
+{'Toy Story 1', '1995-11-22'}, 25
+{'Toy Story 2', '1999-11-24'}, 26
+{'Toy Story 3', '2010-06-18'}, 27
+{'Monsters Inc', '2001-11-02'}, 28
+{'Finding Nemo', '2003-05-30'}, 29
+{'The Haunting in Connecticut', '2009-03-27'}, 30
+{'The Strangers', '2008-05-30'}; 31
+('Interstellar', '2014-11-07'), 32
+('Batman v Superman: Dawn of Justice', '2016-03-25'), 33
+('Paranormal Activity: The Ghost Dimension', '2015-10-23'), 34
+('The Nightmare Before Christmas', '1993-10-29'),35
+('Charlie and the Chocolate Factory', '2005-07-15'), 36
+('King Kong', '2005-12-14'), 37
+('Godzilla', 2014-05-16), 38
+('Transformers: Age of Extinction', '2014-06-27'), 39
+('Bee Movie', '2007-11-02'), 40
+('The Hurt Locker', '2009-07-31'); 41
 
 
 INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
@@ -64,18 +73,61 @@ INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Kristen', 'Connolly', '1980-07-12'),
 ('Chris', 'Hemsworth', '1983-08-11'),
 ('Sarah', 'Silverm', '1970-12-01'), --30
-('Cristian', 'Bale', '1974-01-30'),
-('Heath', 'Ledger', '1979-04-04'),
-('Paul', 'Anderson', '1980-02-05'),
-('Tom', 'Hardy', '1977-09-15'),
-('Edward', 'Furlong', '1977-08-02');
+('Cristian', 'Bale', '1974-01-30'), 31
+('Heath', 'Ledger', '1979-04-04'), 32
+('Paul', 'Anderson', '1980-02-05'), 33
+('Tom', 'Hardy', '1977-09-15'), 34
+('Edward', 'Furlong', '1977-08-02'), //American History X 35
+('Edward', 'Norton', '1969-08-18'), //American History X, Fight Club 36
+('Amy', 'Poehler', '1971-09-16'), //Inside Out 37
+('Bill', 'Hader', '1978-06-07'), //Inside OUt 38
+('Zach', 'Galifianakis','1969-10-01'), //The Hangover, The Hangover2, THe Hangover3 39
+('Bradley', 'Cooper','1975-01-05'), //The Hangover, The Hangover2, The Hangover3 40
+('Tom', 'Hanks', '1956-09-07'), //Toy Story1,2,3 41
+('Tim', 'Allen', '1953-06-13'), //Toy Story1,2,3 42
+('Billy', 'Crystal', '1948-03-14'), //Monsters INc 43
+('John', 'Goodman', '1952-06-02'), //Monsters Inc 44
+('Albert', 'Brooks', '1947-07-22'), //Finding Nemo 45
+('Ellen' , 'DeGeneres', '1958-01-26'), //Finding Nemo 46
+('Virginia', 'Madsen','1961-09-11'), //The Haunting in Connetitcut 47
+('Martin', 'Donovan', '1957-08-19'), //The Haunting 48
+('Scott', 'Speedman', '1975-09-01'), //The strangers 49
+('Liv', 'Tyler', '1977-07-01'), //The Strangers 50
+('Matthew', 'McConaughey','1969-11-04'), //Interstellar 51
+('Anne', 'Hathaway','1982-11-12'),	    //Interstellar 52
+('Ben', 'Affleck','1972-08-15'),	//SuperMan vs Batman 53
+('Henry', 'Cavill','1983-05-05'),	//SuperMan vs Batman 54
+('Chris J','Murray','NA'), //Paranormal 55
+('Brit','Shaw','NA'), //Paranormal 56
+('Danny', 'Elfman','1953-05-29') //Nightmare Before 57
+('Chris', 'Sarandon','1942-07-24') //Nightmare Before 58
+('Johnny','Depp','1963-06-09') //Charlie 59
+('Freddie', 'Highmore','1992-02-14')//Charlie 60
+('Naomi','Watts','1968-09-28') //King Kong 61
+('Jack','Black','1969-08-28') //King Kong 62
+('Aaron','Taylor-Johnson','1990-06-13') //Godzilla 63
+('Elizabeth','Olsen','1989-02-16')//Godzilla 64
+('Mark','Wahlberg','1971-05-06') //Transformers 65
+('Nicola', 'Peltz','1995-01-09') //Transformers 66
+('Jerry','Seinfeld','1954-04-29') //Bee  67
+('Renee','Zellweger','1969-04-25') //Bee 68
+('Jeremy','Renner','1971-01-07')//The Hurt Locker 69
+('Anthony','Mackie','1978-09-23'); //The Hurt Locker 70
+
+
+
+;
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES
 (1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8),(5,9),(5,10),
 (6,11),(6,12),(7,13),(7,14),(8,15),(8,16),(9,17),(9,18),(10,19),(10,20)
 (11,21), (11,7), (12,22), (12,23), (13,24), (13,25), (14,26), (14,27)
 (15,28), (15,29), (16,23), (16,30), (17,31), (17,32), (18,33), (18,34),
-(19,23), (19,24), (20,21), (20,35);
+(19,23), (19,24), (20,21), (20,35), (20,36), (21,37),(21,38),(22,39),(22,40),
+(23,39), (23,40), (24,39), (24,40), (25,41), (25,42), (26,41), (26,42), (27,41),(27,42)
+(28,43), (28,44), (29,45), (29,46), (30,47), (30,48), (31,49), (31,50), (32,51), (32,52),
+(33,53), (33,54), (34,55), (34,56), (35,57), (35,58), (36,59), (36,60), (37,61), (37,62),
+(38,63), (38,64), (39,65), (39,66), (40,67), (40,68), (41,69), (41,70);
 
 INSERT INTO DIRECTOR(first_name, last_name, country) VALUES
 ('Jeffrey Jacob', 'Abrams', 'United States'), 
@@ -96,12 +148,30 @@ INSERT INTO DIRECTOR(first_name, last_name, country) VALUES
 ('Rich', 'Moore', 'United States'),
 ('Christopher', 'Nolan', 'England'),
 ('Brian', 'Helgland', 'United States'),
-('Tony', 'Kaye', 'England');
+('Tony', 'Kaye', 'England')
+('Pete', 'Docter', 'United States'), //Inside out
+('Todd', 'Phillips', 'United States'), //The Hangover part 1,2,3
+('John', 'Lasseter', 'United States'), //Toy Story1, Toy Story2, 
+('Lee', 'Unkrich', 'United States'), //Toy Story3 
+('David','Silverman','United States'), //Monsters Inc
+('Andrew', 'Stanton', 'United States'), //Finding Nemo
+('Peter','Cornwell', 'United States'), //Haunting
+('Bryan', 'Bertino', 'United States'); //The strangers
+('Christopher', 'Nolan', 'United Kingdom'), //Interstellar
+('Zack', 'Snyder','United States'), //Batman vs Superman
+('Gregory', 'Plotkin','United States'), //Paranormal Activity: The Ghost Dimension
+('Henry', 'Selick', 'United States'), //Nightmare before
+('Tim', 'Burton', 'United States'), //Charlie
+('Peter', 'Jackson', 'New Zealand'), //King Kong
+('Gareth, Edwards', 'United States'), //Godzilla
+('Michael', 'Bay','United States') //Transformers
+('Steve', 'Hickner','United States') //Bee Movie
+('Kathryn','Bigelow','United States'); //The Hurt Locker
 
 INSERT INTO DIRECTS(director_id, movie_id) VALUES
 (1,3),(2,2),(3,4),(4,5),(5,6),(6,7),(7,8),(8,9),(9,10),(10,1),
 (11,11), (12,12), (13,13), (14,14), (15,15), (16,16), (17,17), (18,18),
-(19,12), (20,19);
+(19,12), (20,19), (20,21), (21,22), (21,23), (21,24),(22,25), (22,26), (23,27),(24,28), (25,29), (26,30), (27,31), (28,32), (28,33), (29,33), (30,34), (31,35), (32,36), (33,37), (34,38), (35,39), (36,40), (37,41), (35,42);
 
 INSERT INTO TOPICS(description) VALUES
 ('A former Special Forces operative turned mercenary is 
@@ -162,7 +232,8 @@ nature of his reality and his role in the war against its controllers.'), --10
 	driver, makes his way up the ladder, Ricky Bobby\'s talent and devotion are 
 	put to the test'),
 ('A former neo-nazi skinhead tries to prevent his younger brother from going down 
-	the same wrong path that he did.');
+	the same wrong path that he did.'),
+('Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.');
 
 
 INSERT INTO MOVIE_TOPICS(topic_id, movie_id) VALUES
