@@ -436,10 +436,13 @@ td{
 
 
 .completed{
-	position:absolute;
+	position:relative;
 	z-index: 3;
 }
-
+.completed-popup{
+	position:relative;
+	z-index: 3;
+}
 
 
 

@@ -120,7 +120,6 @@
 
                 // only displays tags with movies associated with it
                 if($checkTag_row!=0):
-echo $user;
                   
                     // selects all the movies that are associate with the above tag
                     $query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
@@ -131,7 +130,7 @@ echo $user;
                       die("Error in SQL query: " .pg_last_error());
                   }
                    if ($_SERVER["REQUEST_METHOD"] == "GET") { 
-                   // error_reporting(E_ALL ^ E_NOTICE);  
+                    error_reporting(E_ALL ^ E_NOTICE);  
                      // collect value of input field
                     $name = $_GET['isearch'];      
                     $search_query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
@@ -156,7 +155,7 @@ echo $user;
                      while ($row = pg_fetch_row($res)): 
                       $movie_id = $row[2]?>
             <div class="movie-holder">
-                      <a href="<?= "#"."popup".$movie_id ?>">
+                      <a href="<?="#"."popup".$movie_id ?>">
                         <span class="movie">
 
                         <?php
@@ -173,7 +172,8 @@ echo $user;
                             $image = "../img/transparent.png";
                           }
                         ?>
-                          <img class="completed" src="<?php echo $image?>" width=148>
+
+                          <!--<img class="completed-popup" src="<?php// echo $image?>" width=148>-->
                           <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
                           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
                         </span>
@@ -237,8 +237,9 @@ echo $user;
 
           <a class="close" href="#">&times;</a>
           <div class="content">
-          <img class="completed" src="<?php echo $image?>" width=148>
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;"></img>
+          
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 style="float:left;">
+          <!--<img class="completed" src="<?php //echo $image?>" width=148></img>-->
           <div class="movie-info">
 
           <p class="directors">
