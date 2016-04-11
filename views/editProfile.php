@@ -82,13 +82,11 @@
         </div>
       </div>
     </div>
-    <div id="content" class="container content">
-     <div class="row">
-      <div class="col-md-5">
+    <div id="content" class="container content full-width">
+     <div class="row-fluid no-margins">
         <div class="information">
         <h2 style="padding-left:50px;"><u> Account Information</u></h2>
            <form method="post" action="">
-            <input type="submit" name="save" value="Save" class="btn btn-default submit"/>
           <table>
             <tr>
               <td> Name </td>
@@ -164,40 +162,12 @@
               </tr>
               </tr>
           </table>
+                      <input type="submit" name="save" value="Save" class="btn btn-default submit"/>
+
         </form>
       </div>
     </div>
 
-    <div class="col-md-7">
-
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-          
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-          
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-
-      <div class="col-xs-2">
-        <img src="../img/dead pool.jpg" height=200>
-      </div>
-
-
-
-
-    </div>
 
 
 
