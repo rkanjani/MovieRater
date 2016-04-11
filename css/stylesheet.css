@@ -47,7 +47,7 @@ body{
 .submit{
 	margin-top:25px;
 	background-color: #FAF26F;
-	margin-left:20%;
+
 }
 
 #register{
@@ -306,7 +306,7 @@ body{
   color: #333;
 }
 .popup .close:hover {
-  color: #06D85F;
+  color: #FAF26F;
 }
 .popup .content {
   white-space: normal;
@@ -420,7 +420,7 @@ td{
 .movie-row{
 	padding-left: 20px;
 	height:300px;
-
+	background-color: #f2f2f2;
 	border-bottom-width: small;
 	border-bottom-style: solid;
 	border-bottom-color: #cccccc;
@@ -433,7 +433,10 @@ td{
 }
 
 
-
+.completed{
+	position:absolute;
+	z-index: 3;
+}
 
 
 
