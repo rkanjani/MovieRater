@@ -346,6 +346,7 @@ margin-top:20px;
     overflow-x:wrap;
     overflow-x: none;
 }
+
 .movie-title{
 	max-width:148px;
 	height:50px;
@@ -461,13 +462,17 @@ td{
 }
 
 
-.completed{
-	position:relative;
-	z-index: 3;
-}
 .completed-popup{
-	position:relative;
-	z-index: 3;
+	position: relative;
+    z-index: 10;
+    padding: ;
+    right: 160px;
+    top: 50px;}
+.completed{
+    position: relative;
+    z-index: 10;
+    padding: ;
+    right: 150px;
 }
 
 

@@ -99,9 +99,38 @@
   <div>
   
     <?php 
+
+
         // adds the tag rows on main movie page for all tags
-        while ($tag_row = pg_fetch_row($tag_res)): ?>
-        <div id="movie-container" class="container-fluid movie-container">
+        while ($tag_row = pg_fetch_row($tag_res)): 
+
+          if ($_SERVER["REQUEST_METHOD"] == "GET") { 
+          error_reporting(E_ALL ^ E_NOTICE);  
+           // collect value of input field
+            $name = $_GET['isearch'];      
+              $search_query="SELECT t.name FROM movie_rater.movie m, movie_rater.movie_tags mt,
+                movie_rater.tag t  WHERE  t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND
+              ( (title LIKE '%" . $name . "%') OR (t.name LIKE '%" . $name . "%'));";
+                  $res=pg_query($dbconn,$search_query); 
+                    if(!$res){
+                      die("Error in SQL query: " .pg_last_error());
+                  } 
+                  $tag_name = pg_fetch_row($res);
+          }
+
+          if($tag_name[0] == $tag_row[0]){
+            $display = "display:block;";
+          }
+          else{
+            $display = "display:none;";
+          }
+
+   
+
+
+
+          ?>
+        <div id="movie-container" style="<?php echo $display ?>" class="container-fluid movie-container">
             <?php 
 
               // only selects the tags that have a movie in associated with is
@@ -142,7 +171,7 @@
                             $res=pg_query($dbconn,$search_query); 
                               if(!$res){
                                 die("Error in SQL query: " .pg_last_error());
-                              } 
+                            } 
 
                     }
             ?>
@@ -174,8 +203,8 @@
                           }
                         ?>
 
-                          <!--<img class="completed-popup" src="<?php// echo $image?>" width=148>-->
-                          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220>
+                          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=220 width=151>
+                          <img class="completed" src="<?php echo $image?>" width=148>
                           <h4 class="movie-title"><?php $pieces=explode("-", $row[0]); echo $row[1]." (".$pieces[0].")" ?> </h4>
                         </span>
                       </a>
@@ -239,8 +268,8 @@
           <a class="close" href="#">&times;</a>
           <div class="content">
           
-          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 width=170 style="float:left;">
-          <!--<img class="completed" src="<?php //echo $image?>" width=148></img>-->
+          <img src="<?php echo "../img/".$row[1].".jpg"?>" height=250 width=170 style="float:left;"/>
+
           <div class="movie-info">
 
           <p class="directors">
