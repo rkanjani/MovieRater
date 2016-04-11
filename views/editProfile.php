@@ -41,20 +41,26 @@
     $password=$_POST['ipassword'];
     $email=$_POST['iemail'];
     $date_of_birth=$_POST['idob'];
-    //gender radio button ?????????
-    //$gender=$_POST['igender'];
     $city=$_POST['icity'];
     $province=$_POST['iprovince'];
     $country=$_POST['icountry'];
     $occupation=$_POST['ioccupation'];
     $device=$_POST['idevice'];
-    $ageRange=$_POST['iageRange'];
 
+    // updates user with edited information
     $updateUser_query="UPDATE movie_rater.users SET first_name='$firstname', last_name='$lastname', email='$email',
     username='$username', password='$password', city='$city', province='$province', country='$country'
     WHERE user_id=$user;";
     $result=pg_query($dbconn,$updateUser_query);
     if(!$result){
+      die("Error in SQL query: " .pg_last_error());
+    }
+
+    //updates profile with editied information
+    $updateProfile_query="UPDATE movie_rater.profile SET occupation='$occupation', date_of_birth='$date_of_birth',
+    device_used='$device';";
+    $profile_result=pg_query($dbconn,$updateProfile_query);
+    if(!$profile_result){
       die("Error in SQL query: " .pg_last_error());
     }
     header("Location: http://localhost/MovieRater/views/profile.php");
@@ -172,12 +178,6 @@
               <td> Device Used </td>
               <td class="text_center"> 
                 <input type="text" class="name-form col-md-12" id="idevice" name="idevice"placeholder="<?php echo $row2[3]; ?>" value="<?php echo $row2[3]; ?>"> 
-              </td>
-              </tr>
-              <tr>
-              <td> Age Range </td>
-              <td class="text_center"> 
-                <input type="text" class="name-form col-md-12" id="iageRange" name="iageRange"placeholder="<?php echo $row2[4]; ?>" value="<?php echo $row2[4]; ?>"> 
               </td>
               </tr>
               </tr>

@@ -24,7 +24,7 @@
     }
     $row=pg_fetch_row($res);
 
-    $query2="SELECT date_of_birth, gender, occupation, device_used, age_range FROM movie_rater.profile WHERE user_id=$user;";
+    $query2="SELECT date_of_birth, gender, occupation, device_used FROM movie_rater.profile WHERE user_id=$user;";
     $res2=pg_query($dbconn,$query2);
     if(!$res2){
       die("Error in SQL query: " .pg_last_error());
@@ -128,15 +128,6 @@
                   <td class="text_center"> <?php echo $row2[3]; ?> </td>
                 </tr>
               <?php endif; ?>
-
-              <?php if ($row2[4]!= null): ?>
-                <tr>
-                  <td> Age Range </td>
-                  <td class="text_center"> <?php echo $row2[4]; ?> </td>
-                </tr>
-              <?php endif; ?>
-
-                
               </tr>
           </table>
           <input type="submit" name="edit" value="Edit" class="btn btn-default submit"/>
