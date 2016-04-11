@@ -11,7 +11,22 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     
   </head>
+<?php
+  session_start();
+  $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
+    $dbconn=pg_connect($conn_string) or die('Connection failed');
+    
+    //gets the user that is logged in user_id
+    $user=$_SESSION['user'];
 
+    //retrieves watched data and orders by rating and date rated
+    $watched_query="SELECT movie_id, date_rated, rating FROM movie_rater.watches WHERE
+    user_id=$user ORDER BY rating DESC, date_rated DESC;";
+    $watched_res=pg_query($dbconn,$watched_query);
+        if(!$watched_res){
+          die("Error in SQL query: " .pg_last_error());
+        }
+    ?>
   <body>
   <div id="header" class="container header">
   	<div class="row-fluid">
@@ -49,24 +64,76 @@
 
   <div class="container normal-bg full-width full-height">
 
-    <!--REPEAT THIS BLOCK OF CODE-->
+    <!--populates the page with the watched movies-->
+    <?php while ($watched_row = pg_fetch_row($watched_res)): 
+
+        //retrieves movie information for watched movie
+        $movie_query="SELECT title, date_released FROM movie_rater.movie WHERE movie_id=$watched_row[0];";
+        $movie_res=pg_query($dbconn,$movie_query);
+          if(!$movie_res){
+            die("Error in SQL query: " .pg_last_error());
+          }
+          $movie_row=pg_fetch_row($movie_res);
+
+          // splits the date where '-' is
+          $year=explode("-", $movie_row[1]);
+
+        //retrives director information
+        $director_query="SELECT first_name, last_name FROM movie_rater.director d, movie_rater.directs ds
+        WHERE ds.movie_id=$watched_row[0] AND ds.director_id = d.director_id;";
+        $director_res=pg_query($dbconn,$director_query);
+          if(!$director_res){
+            die("Error in SQL query: " .pg_last_error());
+          }
+
+          //retrieves actor information
+        $actor_query="SELECT first_name, last_name FROM movie_rater.actor a, movie_rater.actor_plays ap
+        WHERE ap.movie_id=$watched_row[0] AND ap.actor_id = a.actor_id;";
+        $actor_res=pg_query($dbconn,$actor_query);
+          if(!$actor_res){
+            die("Error in SQL query: " .pg_last_error());
+          }
+
+          //retrieves topic information
+          $topic_query="SELECT description FROM movie_rater.topics t, movie_rater.movie_topics mt
+        WHERE mt.movie_id=$watched_row[0] AND mt.topic_id = t.topic_id;";
+        $topic_res=pg_query($dbconn,$topic_query);
+          if(!$topic_res){
+            die("Error in SQL query: " .pg_last_error());
+          }
+
+          $topic_row=pg_fetch_row($topic_res);
+
+        ?>
+
+
 
     <div class="row-fluid no-margins movie-row">
       <div class="col-md-2 inherit-height">
         <span>
-          <img class="img-rated" src="../img/juno.jpg" height=295>
+          <img class="img-rated" src="../img/<?php echo $movie_row[0] ?>.jpg" height=295>
         </span>
       </div>
       <div class="col-md-10 inherit-height">
-        <h1>Juno (2003)</h1>  
-        <h3><b>Director(s):</b> Bob Dylan</h3>
-        <h3><b>Starring:</b> Jonah Hill Leonardo DiCaprio</h3>
-        <h3><b>Synopsis:</b> Faced with an unplanned pregnancy, an offbeat young woman makes an unusual decision regarding her unborn child.</h3>
-        <h3><b>Rating:</b> 2/10</h3>
+        <h1><?php echo $movie_row[0]." (". $year[0].")"?></h1>  
+
+        <h3><b>Director(s):</b> 
+          <p><?php while ($director_row = pg_fetch_row($director_res)): ?>
+                <?php echo $director_row[0]." ".$director_row[1]; ?></p>
+            <?php endwhile ?></h3>
+
+        <h3><b>Starring:</b>
+         <?php while ($actor_row = pg_fetch_row($actor_res)): ?>
+              <p><?php echo $actor_row[0]." ".$actor_row[1]; ?> </p>
+            <?php endwhile ?></h3>
+
+        <h3><b>Synopsis:</b> <?php echo $topic_row[0] ?></h3>
+       
+        <h3><b>Rating:</b> <?php echo $watched_row[2] ."/10" ?></h3>
       </div>
     </div>
 
-    <!--REPEAT BLOCK ENDS HERE -->
+    <?php endwhile ?>
 
 
   </div>
