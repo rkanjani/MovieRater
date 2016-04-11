@@ -65,12 +65,12 @@
         <i class="material-icons md-36">done</i>
       </a>
 
-      <a class="rated" href="#">
-        <i class="material-icons md-36">star_rate</i>
+      <a class="rated" href="rated.php">
+        <i class="material-icons md-36" style="max-width: 36px;">star_rate</i>
       </a>
 
 
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="search-container">
         <form action='<?php echo $_SERVER['PHP_SELF'];?>' method='post'>
           <div id="search-container"> 
               <div class="input-group stylish-input-group">
@@ -97,6 +97,7 @@
               // only selects the tags that have a movie in associated with is
               $checkTag_query="SELECT mt.movie_id FROM movie_rater.movie_tags mt, movie_rater.tag t
                 WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id;";
+
 
               $checkTag_res=pg_query($dbconn,$checkTag_query);
                 if(!$checkTag_res){
