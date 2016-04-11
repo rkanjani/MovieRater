@@ -24,7 +24,7 @@
     }
     $row=pg_fetch_row($res);
 
-    $query2="SELECT date_of_birth, gender, occupation, device_used, age_range FROM movie_rater.profile WHERE user_id=$user;";
+    $query2="SELECT date_of_birth, gender, occupation, device_used FROM movie_rater.profile WHERE user_id=$user;";
     $res2=pg_query($dbconn,$query2);
     if(!$res2){
       die("Error in SQL query: " .pg_last_error());
@@ -99,7 +99,7 @@
               <i class="material-icons md-36">launch</i>
             </a>
 
-            <h3 class="status"><i>Check yourself out!</i></h3>
+            <h3 class="status"><i> Edit yourself out!</i></h3>
            <img class="logo" src="../img/star.png" height="55" with="55"></img>
         </div>
         <div class="col-md-6 name-column">
