@@ -106,7 +106,6 @@
                 <a href="#">
                   <span class="movie">
                     <img class="completed" src="<?php echo "../img/".$movie_row[0].".jpg"?>" width=148>
-                    <img src="" height=220>
                     <h4 class="movie-title"><?php echo $movie_row[0] ?></h4>
                   </span>
                 </a>
@@ -127,7 +126,6 @@
 
                       <a class="close" href="#">&times;</a>
                       <div class="content">
-                          <img class="completed" src="" width=148>
                           <img src="" height=250 style="float:left;"></img>
                           <div class="movie-info">
 
