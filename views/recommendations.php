@@ -77,8 +77,6 @@
 
       $numOfMovies = $average+$numOfRatings;
 
-      echo "For Genre #".$movie_tag." grab ".(int)$numOfMovies;
-
       // selects movies from the above tag and the ones that are the movst rated
       $movie_query = "SELECT m.title, m.date_released, m.movie_id, w.rating FROM movie_rater.movie m,
      movie_rater.tag t, movie_rater.movie_tags mt, movie_rater.watches w WHERE t.tag_id = '$tag_row[1]'
@@ -100,6 +98,9 @@
             <?php while($numOfMovies>0):
                 $numOfMovies--;
                 $movie_row=pg_fetch_row($movie_res);
+                if($movie_row[0]==null){
+                  break;
+                }
             ?>
           <div class="movie-holder">
 
