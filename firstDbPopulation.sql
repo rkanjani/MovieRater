@@ -17,7 +17,7 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('Wreck-It Ralph', '2012-11-02'),
 ('The Dark Knight', '2008-07-18'),
 ('Legend', '2015-11-20'),
-('Talledega Nights', '2006-08-04'),
+('Talladega Nights', '2006-08-04'),
 ('American History X', '1998-11-20');
 
 INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
