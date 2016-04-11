@@ -103,7 +103,7 @@
                 if($movie_row[0]==null){
                   break;
                 }
-
+echo "cmon man";
 
             ?>
           <div class="movie-holder-recc">

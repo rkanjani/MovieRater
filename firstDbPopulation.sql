@@ -323,16 +323,66 @@ INSERT INTO USERS(first_name, last_name, email, username, password) VALUES
 ('John', 'Smith', 'John@email', 'john', '123abc'),
 ('Michelle', 'Kenny', 'kenny@email.com', 'kenny12', 'hey'),
 ('Shawn', 'Dunkahunna', 'sahwn@email', 'shawn', 'password'),
-('Jennifer', 'Rita', 'jen@email', 'jennn', '123bhgy');
+('Jennifer', 'Rita', 'jen@email', 'jennn', '123bhgy'),
+('Richard', 'Jackson', 'Rich@here', 'richy', 'cmon man'), --10
+('Shaq', 'isme', 'is@yahoo', 'isme1234', 'yayay'),
+('Brett', 'Wallace', 'bret@mon', 'bwallace', 'jhess'),
+('Chealsea', 'Mitchell', 'cm@email', 'cmitchell', 'password1234'),
+('Ricky', 'Lahye', 'ricj@trailer', 'rlayhe', 'bubbles'),
+('Jackson', 'Me', 'me@me', 'meme', 'Jackson5'),
+('Tim', 'Horton', 'tim@tims', 'coffee', 'sooogoood'),
+('Rnady', 'Bobandy', 'bandy@trailer', 'Rnadny', 'p234nf'),
+('miTCHELL', 'CMON', 'yay@yay', 'mitchelll1234', 'password69'),
+('Zack', 'Smith', 'twa@music', 'twa_man','thewordalive'),
+('jason', 'bobby', 'bobs@booby', 'bobber', 'jhess');
 
 INSERT INTO WATCHES(user_id, movie_id, date_rated, rating) VALUES
-(1, 1, '2016-04-06', 5);
+(9, 41, '2016-04-06', 5), (5, 3, '2016-04-06', 7),
+(15, 40, '2016-04-06', 1), (6, 3, '2016-04-06', 1),
+(4, 40, '2016-04-06', 4), (7, 3, '2016-04-06', 2),
+(4, 41, '2016-04-06', 9), (5, 1, '2016-04-06', 5),
+(2, 36, '2016-04-06', 10), (14, 1, '2016-04-06', 9),
+(2, 25, '2016-04-06', 3), (18, 14, '2016-04-06', 8),
+(14, 13, '2016-04-06', 4), (4, 15, '2016-04-06', 4),
+(16, 14, '2016-04-06', 7), (3, 18, '2016-04-06', 5),
+(19, 15, '2016-04-06', 7), (8, 19, '2016-04-06', 8),
+(12, 23, '2016-04-06', 2), (2, 12, '2016-04-06', 7),
+(11, 26, '2016-04-06', 9), (9, 11, '2016-04-06', 6),
+(11, 28, '2016-04-06', 2), (2, 35, '2016-04-06', 3),
+(13, 29, '2016-04-06', 7), (9, 37, '2016-04-06', 5),
+(15, 18, '2016-04-06', 1), (2, 13, '2016-04-06', 2),
+(17, 37, '2016-04-06', 5), (7, 37, '2016-04-06', 1),
+(18, 39, '2016-04-06', 7), (8, 22, '2016-04-06', 9),
+(19, 3, '2016-04-06', 8), (3, 21, '2016-04-06', 10),
+(13, 3, '2016-04-06', 3), (2, 29, '2016-04-06', 10),
+(12, 3, '2016-04-06', 2), (9, 29, '2016-04-06', 9),
+(15, 9, '2016-04-06', 8), (2, 27, '2016-04-06', 5),
+(16, 8, '2016-04-06', 2), (9, 28, '2016-04-06', 6),
+(15, 3, '2016-04-06', 8), (3, 4, '2016-04-06', 3),
+(11, 2, '2016-04-06', 3), (2, 3, '2016-04-06', 7),
+(12, 28, '2016-04-06', 9), (6, 1, '2016-04-06', 5);
 
 INSERT INTO PROFILE(user_id,  date_of_birth, gender, device_used) VALUES
 (1, '1996-03-03', 'm', 'Computer'),
 (2, '1996-04-07', 'o', 'phone'),
 (3, '1954-04-13', 'o', 'tablet'),
-(4, '1963-12-12', 'm', 'Computer');
+(4, '1963-12-12', 'f', 'Computer')
+(5, '1996-03-03', 'm', 'Phone'),
+(6, '1996-04-03', 'f', 'Computer'),
+(7, '1956-03-03', 'm', 'tablet'),
+(8, '1996-08-03', 'o', 'Computer'),
+(9, '1996-03-03', 'm', 'Computer'),
+(10, '1996-10-03', 'm', 'Computer'),
+(11, '1996-03-03', 'm', 'Computer'),
+(12, '1996-12-03', 'm', 'phone'),
+(13, '1966-03-03', 'm', 'Computer'),
+(14, '1986-03-13', 'm', 'tablet'),
+(15, '1936-03-06', 'm', 'Computer'),
+(16, '1978-03-03', 'f', 'Computer'),
+(17, '1938-03-23', 'm', 'phone'),
+(18, '1985-03-13', 'o', 'Computer'),
+(19, '200-03-17', 'm', 'tablet'),
+(20, '1816-03-19', 'f', 'Computer'),;
 
 INSERT INTO TAG (NAME) VALUES
 ('Action'), ('Adventure'), ('Thriller'), ('Drama'), ('Romance'), ('Comedy'), ('Family'), --7
