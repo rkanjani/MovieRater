@@ -88,11 +88,11 @@
       ?>
 
     	<div class="row-fluid">
-          <h2><u><?php echo $tag_row[0] ?></u></h2>
+          <h2 id="genre-name"><u><?php echo $tag_row[0] ?></u></h2>
       </div>
 
 
-      <div class="movie-listing row-fluid">
+      <div class="movie-listing-recc row-fluid">
   
             
             <?php while($numOfMovies>0):
@@ -101,13 +101,15 @@
                 if($movie_row[0]==null){
                   break;
                 }
+
+
             ?>
           <div class="movie-holder">
 
                 <a href="#">
                   <span class="movie">
-                    <img class="completed" src="<?php echo "../img/".$movie_row[0].".jpg"?>" width=148>
-                    <h4 class="movie-title"><?php echo $movie_row[0] ?></h4>
+                    <img class="completed" src="<?php echo "../img/".$movie_row[0].".jpg"?>" width=148 height=215>
+                    <h4 class="movie-title"><?php $pieces=explode("-", $movie_row[1]); echo $movie_row[0]." (".$pieces[0].")" ?> </h4>
                   </span>
                 </a>
               <div id="" class="overlay">
