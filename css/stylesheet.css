@@ -386,7 +386,6 @@ td{
  float: right; 
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
@@ -408,10 +407,12 @@ td{
     background-color: #FAF26F;
 }
 .trailer{
-    background-color: #FAF26F;
-	position: absolute;
-    width: 170px;
+	background-color: #FAF26F;
+    position: absolute;
+    top: 330px;
     bottom: 110px;
+    height: 40px;
+    width: 170px;
     font-size: 20px;
 }
 
