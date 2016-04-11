@@ -8,7 +8,7 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('Juno', '2007-12-25'),
 ('Shrek', '2001-05-18'),
 ('The Avengers', '2012-05-12'),
-('The Matrix', '1999-03-21'), --10
+('The Matrix', '1999-03-21'), 
 ('Fight Club', '1999-10-15'), 
 ('Step Brothers', '2008-07-25'),
 ('A Nightmare on Elm Street', '1984-11-16'),
@@ -18,7 +18,20 @@ INSERT INTO MOVIE (title, date_released) VALUES
 ('The Dark Knight', '2008-07-18'),
 ('Legend', '2015-11-20'),
 ('Talladega Nights', '2006-08-04'),
-('American History X', '1998-11-20');
+('American History X', '1998-11-20'), --Rohan below
+{'Inside Out', '2015-06-19'},
+{'Up', '2005-05-29'},
+{'Hangover 1', '2009-06-05'},
+{'Hangover 2', '2011-05-26'},
+{'Hangover 3', '2013-05-23'},
+{'Toy Story 1', '1995-11-22'},
+{'Toy Story 2', '1999-11-24'},
+{'Toy Story 3', '2010-06-18'},
+{'Monsters Inc', '2001-11-02'},
+{'Finding Nemo', '2003-05-30'},
+{'The Haunting in Connecticut', '2009-03-27'},
+{'The Strangers', '2008-05-30'};
+
 
 INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Ryan', 'Reynolds', '1976-10-23'), 
@@ -55,8 +68,7 @@ INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Heath', 'Ledger', '1979-04-04'),
 ('Paul', 'Anderson', '1980-02-05'),
 ('Tom', 'Hardy', '1977-09-15'),
-('Edward', 'Furlong', '1977-08-02'); 
-
+('Edward', 'Furlong', '1977-08-02');
 
 INSERT INTO ACTOR_PLAYS(movie_id, actor_id) VALUES
 (1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8),(5,9),(5,10),

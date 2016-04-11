@@ -45,8 +45,9 @@ body{
 	left:10%;
 }
 .submit{
-	margin-top:25px;
+
 	background-color: #FAF26F;
+	margin-left: 20%;
 
 }
 
@@ -176,10 +177,11 @@ body{
 	z-index: 0;
 }
 #search-block{
-		margin-top: 20px;
+	margin-top: 20px;
     margin-left: 415px;
     width: 250px;
-        position: absolute;
+    position: absolute;
+    z-index: 7
 
 }
 .stylish-input-group button{
