@@ -97,8 +97,8 @@ INSERT INTO ACTOR(first_name, last_name, date_of_birth) VALUES
 ('Anne', 'Hathaway','1982-11-12'),	    
 ('Ben', 'Affleck','1972-08-15'),	
 ('Henry', 'Cavill','1983-05-05'),	
-('Chris J','Murray','NA'),
-('Brit','Shaw','NA'), 
+('Chris J','Murray','1986-02-01'),
+('Brit','Shaw','1945-03-01'), 
 ('Danny', 'Elfman','1953-05-29'), 
 ('Chris', 'Sarandon','1942-07-24'),
 ('Johnny','Depp','1963-06-09'),
@@ -169,7 +169,7 @@ INSERT INTO DIRECTS(director_id, movie_id) VALUES
 (11,11), (12,12), (13,13), (14,14), (15,15), (16,16), (17,17), (18,18),
 (12,19), (19,20), (20,21), (21,22), (21,23), (21,24),(22,25), (22,26), (23,27),
 (24,28), (25,29), (26,30), (27,31), (28,32), (28,33), (29,33), (30,34), (31,35),
- (32,36), (33,37), (34,38), (35,39), (36,40), (37,41), (35,42);
+ (32,36), (33,37), (34,38), (35,39), (36,40), (37,41);
 
 INSERT INTO TOPICS(description) VALUES
 ('A former Special Forces operative turned mercenary is 
@@ -227,7 +227,7 @@ nature of his reality and his role in the war against its controllers.'), --10
 	organised crime empire in the East End of London during the 1960s.'),
 ('#1 NASCAR driver Ricky Bobby stays atop the heap thanks to a pact with his 
 	best friend and teammate, Cal Naughton, Jr. But when a French Formula One 
-	driver, makes his way up the ladder, Ricky Bobby\'s talent and devotion are 
+	driver, makes his way up the ladder, Ricky Bobbys talent and devotion are 
 	put to the test'),
 ('A former neo-nazi skinhead tries to prevent his younger brother from going down 
 	the same wrong path that he did.'),
@@ -238,34 +238,34 @@ nature of his reality and his role in the war against its controllers.'), --10
 	previous night and the bachelor missing. They make their way around the city 
 	in order to find their friend before his wedding.'),
 ('Two years after the bachelor party in Las Vegas, Phil, Stu, Alan, and Doug jet 
-	to Thailand for Stu\'s wedding. Stu\'s plan for a subdued pre-wedding brunch, 
+	to Thailand for Stus wedding. Stus plan for a subdued pre-wedding brunch, 
 	however, goes seriously awry.'),
 ('When one of their own is kidnapped by an angry gangster, the Wolf Pack must track 
 	down Mr. Chow, who has escaped from prison and is on the lam.'),
 	('A cowboy doll is profoundly threatened and jealous when a new spaceman figure
-	 supplants him as top toy in a boy\'s room.'),
+	 supplants him as top toy in a boys room.'),
 	('When Woody is stolen by a toy collector, Buzz and his friends vow to rescue 
 		him, but Woody finds the idea of immortality in a museum tempting.'),
 	('The toys are mistakenly delivered to a day-care center instead of the attic 
-		right before Andy leaves for college, and it\'s up to Woody to convince the 
-		other toys that they weren\'t abandoned and to return home.'),
+		right before Andy leaves for college, and its up to Woody to convince the 
+		other toys that they werent abandoned and to return home.'),
 	('In order to power the city, monsters have to scare children so that they scream. 
 		However, the children are toxic to the monsters, and after a child gets through,
 		 two monsters realize things may not be what they think.'),
 	('After his son is captured in the Great Barrier Reef and taken to Sydney, a timid 
 		clownfish sets out on a journey to bring him home.'),
-	('After a family is forced to relocate for their son\'s health, they begin experiencing 
+	('After a family is forced to relocate for their sons health, they begin experiencing 
 		supernatural behavior in their new home, and uncover a sinister history.'),
 	('A young couple staying in an isolated vacation home are terrorized by three unknown assailants.'),
-	('A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.'),
+	('A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.'),
 	('Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, 
 	while the world wrestles with what kind of a hero it really needs.'),
 	('Using a special camera that can see spirits, a family must protect their daughter from 
 		an evil entity with a sinister plan.'),
-	('Jack Skellington, king of Halloween Town, discovers Christmas Town, but doesn\'t quite 
+	('Jack Skellington, king of Halloween Town, discovers Christmas Town, but doesnt quite 
 		understand the concept.'),
 	('A young boy wins a tour through the most magnificent chocolate factory in the world, 
-		led by the world\'s most unusual candy maker.'),
+		led by the worlds most unusual candy maker.'),
 	('In 1933 New York, an overly ambitious movie producer coerces his cast and hired ship 
 		crew to travel to mysterious Skull Island, where they encounter Kong, a giant ape who 
 		is immediately smitten with leading lady Ann Darrow.'),
@@ -275,7 +275,7 @@ nature of his reality and his role in the war against its controllers.'), --10
 	 Unexpectedly, Optimus Prime and his remaining gang turn to a mechanic, his daughter, and her back 
 	 street racing boyfriend for help.'),
 	('Barry B. Benson, a bee just graduated from college, is disillusioned at his lone career choice: 
-		making honey. On a special trip outside the hive, Barry\'s life is saved by Vanessa, a florist
+		making honey. On a special trip outside the hive, Barrys life is saved by Vanessa, a florist
 		 in New York City. As their relationship blossoms, he discovers humans actually eat honey, and 
 		 subsequently decides to sue them.'),
 	('During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his 
@@ -312,22 +312,27 @@ INSERT INTO STUDIO(name, country) VALUES
 INSERT INTO SPONSORS(studio_id, movie_id) VALUES
 (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
 (11,11), (12,12), (13,13), (14,14), (15,15), (16,16), (17,17), (18,18),
-(19,12), (20,3);
+(12,19), (3,20);
 
 INSERT INTO USERS(first_name, last_name, email, username, password) VALUES
 ('Tyler', 'Metade', 'tyler@email.com', 'tmetade', 'password'),
 ('Rohan', 'Kanjani', 'rohan@email.com', 'rohan', 'password'),
 ('Randy', 'Layhe', 'rlayhe@email.com', 'randy', '123'),
-('Jim', 'Lahye', 'jim@eamil.com', 'jim', '12ab');
+('Jim', 'Lahye', 'jim@eamil.com', 'jim', '12ab'),
+('User', 'User', 'User@email', 'user', 'password'),
+('John', 'Smith', 'John@email', 'john', '123abc'),
+('Michelle', 'Kenny', 'kenny@email.com', 'kenny12', 'hey'),
+('Shawn', 'Dunkahunna', 'sahwn@email', 'shawn', 'password'),
+('Jennifer', 'Rita', 'jen@email', 'jennn', '123bhgy');
 
 INSERT INTO WATCHES(user_id, movie_id, date_rated, rating) VALUES
 (1, 1, '2016-04-06', 5);
 
-INSERT INTO PROFILE(user_id, age_range, date_of_birth, gender, device_used) VALUES
-(1, 20, '1996-03-03', 'm', 'Computer'),
-(2, 20, '1996-04-07', 'o', 'phone'),
-(3, 34, '1954-04-13', 'o', 'tablet'),
-(4, 55, '1963-12-12', 'm', 'Computer');
+INSERT INTO PROFILE(user_id,  date_of_birth, gender, device_used) VALUES
+(1, '1996-03-03', 'm', 'Computer'),
+(2, '1996-04-07', 'o', 'phone'),
+(3, '1954-04-13', 'o', 'tablet'),
+(4, '1963-12-12', 'm', 'Computer');
 
 INSERT INTO TAG (NAME) VALUES
 ('Action'), ('Adventure'), ('Thriller'), ('Drama'), ('Romance'), ('Comedy'), ('Family'), --7
@@ -339,7 +344,7 @@ INSERT INTO MOVIE_TAGS (movie_id, tag_id) VALUES
 (6,4), (6,5), (7,4), (7,5), (7,6), (8,2), (8,6), (8,7), (9,1), (9,2), (9,8), (10,1), (10,8),
 (11,4), (12,6), (13,9), (14,1), (14,2), (14,10), (15,9), (15,3), (15,11), (15,12), (16,13),
 (16,2), (16,6), (16,7), (16,8), (17,14), (17,1), (17,4), (18,15), (18,16), (18,14), (18,4),
-(18,3), (19,17), (19,1), (19,6), (20,14), (20,4), (21,13), (21,2), (21,7), (21,7), (21,4),
+(18,3), (19,17), (19,1), (19,6), (20,14), (20,4), (21,13), (21,2), (21,7), (21,4),
 (22,6), (23,6), (24,6), (25,13), (25,2), (25,6), (25,7), (25,12),(26,13), (26,2), (26,6),
 (26,7), (26,12), (27,13), (27,2), (27,6), (27,7), (27,12), (28,13), (28,2), (28,6), (28,7),
 (28,12), (29,13), (29,2), (29,6), (29,7), (30,9), (30,11), (30,3), (30,4), (31,9), (31,11),

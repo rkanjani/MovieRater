@@ -14,13 +14,13 @@
   </head>
 <?php
   session_start();
+
+  //connects to db
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     
+    //gets the user_id from user logged in
     $user=$_SESSION['user'];  
-    //to check what query should be used to populate page
-    $flag = false;
-
 
     //selects all tags in db
     $tag_query="SELECT name, tag_id FROM movie_rater.tag ORDER BY name ASC;";
@@ -29,9 +29,7 @@
       die("Error in SQL query: " .pg_last_error());
     }
 
-    //search query that searches db for what the user entered
-   
-
+    //Enters the Rating of the movie watched
     if(array_key_exists('srating', $_POST)){
          $movie_id=$_POST['imovie_id'];
          $rating=$_POST['irating'.$movie_id];
@@ -105,22 +103,22 @@
         while ($tag_row = pg_fetch_row($tag_res)): ?>
         <div id="movie-container" class="container-fluid movie-container">
             <?php 
+
               // only selects the tags that have a movie in associated with is
               $checkTag_query="SELECT mt.movie_id FROM movie_rater.movie_tags mt, movie_rater.tag t
                 WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id;";
+                  $checkTag_res=pg_query($dbconn,$checkTag_query);
+                    if(!$checkTag_res){
+                      die("Error in SQL query: " .pg_last_error());
+                    }
+
+                      //gets the number of rows returned fro the query
+                      $checkTag_row = pg_num_rows($checkTag_res);
 
 
-              $checkTag_res=pg_query($dbconn,$checkTag_query);
-                if(!$checkTag_res){
-                  die("Error in SQL query: " .pg_last_error());
-                }
-                $checkTag_row = pg_num_rows($checkTag_res);
 
-
-
-                // only displays tags with movies associated with it
-                if($checkTag_row!=0):
-echo $user;
+                      // only displays tags with movies associated with it
+                      if($checkTag_row!=0):
                   
                     // selects all the movies that are associate with the above tag
                     $query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
@@ -131,18 +129,16 @@ echo $user;
                       die("Error in SQL query: " .pg_last_error());
                   }
                    if ($_SERVER["REQUEST_METHOD"] == "GET") { 
-                   // error_reporting(E_ALL ^ E_NOTICE);  
+                    error_reporting(E_ALL ^ E_NOTICE);  
                      // collect value of input field
-                    $name = $_GET['isearch'];      
-                    $search_query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
-                  movie_rater.tag t  
-                     WHERE  t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND
-                     title LIKE '%" . $name . "%';";
-                    $res=pg_query($dbconn,$search_query); 
-                    $flag=false;
-                    if(!$res){
-                      die("Error in SQL query: " .pg_last_error());
-                    } 
+                      $name = $_GET['isearch'];      
+                        $search_query="SELECT date_released, title, m.movie_id, youtube, t.name FROM movie_rater.movie m, movie_rater.movie_tags mt,
+                          movie_rater.tag t  WHERE  t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND
+                        ( (title LIKE '%" . $name . "%') OR (t.name LIKE '%" . $name . "%'));";
+                            $res=pg_query($dbconn,$search_query); 
+                              if(!$res){
+                                die("Error in SQL query: " .pg_last_error());
+                              } 
 
                     }
             ?>
