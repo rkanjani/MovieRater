@@ -17,7 +17,7 @@
   $conn_string="host=web0.site.uottawa.ca port=15432 dbname=tmeta088 user=tmeta088 password=Pu\$\$yslayer";
     $dbconn=pg_connect($conn_string) or die('Connection failed');
     
-    $user=1;  
+    $user=$_SESSION['user'];  
     //to check what query should be used to populate page
     $flag = false;
 
@@ -120,27 +120,30 @@
 
                 // only displays tags with movies associated with it
                 if($checkTag_row!=0):
-
-                  //flag will change to false once the user searchs to change to the search query
-                  if($flag==true){
-
+echo $user;
+                  
                     // selects all the movies that are associate with the above tag
-                    $query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
+                    $query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
                   movie_rater.tag t WHERE t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id;";
                     $res=pg_query($dbconn,$query);
 
                     if(!$res){
                       die("Error in SQL query: " .pg_last_error());
-                    }
                   }
-                   if ($_SERVER["REQUEST_METHOD"] == "GET") {   
+                   if ($_SERVER["REQUEST_METHOD"] == "GET") { 
+                   // error_reporting(E_ALL ^ E_NOTICE);  
                      // collect value of input field
                     $name = $_GET['isearch'];      
-                    $search_query="SELECT date_released, title, m.movie_id FROM movie_rater.movie m, movie_rater.movie_tags mt,
+                    $search_query="SELECT date_released, title, m.movie_id, youtube FROM movie_rater.movie m, movie_rater.movie_tags mt,
                   movie_rater.tag t  
                      WHERE  t.tag_id='$tag_row[1]' AND t.tag_id=mt.tag_id AND m.movie_id = mt.movie_id AND
                      title LIKE '%" . $name . "%';";
-                    $res=pg_query($dbconn,$search_query);    
+                    $res=pg_query($dbconn,$search_query); 
+                    $flag=false;
+                    if(!$res){
+                      die("Error in SQL query: " .pg_last_error());
+                    } 
+
                     }
             ?>
     	    <div class="row-fluid">
@@ -219,6 +222,7 @@
                 if(!$watchedres){
                   die("Error in SQL query: " .pg_last_error());
                 }
+                $flag=true;
 
                 if(pg_num_rows($watchedres)==1){
                   $image = "../img/stamp.png";
@@ -291,7 +295,7 @@
             <input id="rate-button" class="btn btn-default " type="submit" name="srating" value="Rate"/>
           </form>
 
-            <a name="trailer" href="https://www.youtube.com/watch?v=Deadpool" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
+            <a name="trailer" href="<?php echo $row[3] ?>" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
         </div>
        
         </div>
