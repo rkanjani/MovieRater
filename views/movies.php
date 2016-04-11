@@ -42,8 +42,8 @@
     //      }
 
     if(array_key_exists('srating', $_POST)){
-         $rating=$_POST['irating'];
          $movie_id=$_POST['imovie_id'];
+         $rating=$_POST['irating'.$movie_id];
          $date=getdate();
          $date_watched=$date['year']."-".$date['mon']."-".$date['mday'];
 
@@ -239,22 +239,26 @@
           
 
           </div>
-           <!--  <fieldset class="rating" form="rate">  -->
-              <form action="" method="post">
-             <!-- <input type="radio"  name="irating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio"  name="irating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio"  name="irating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio"  name="irating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio"  name="irating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio"  name="irating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio"  name="irating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio"  name="irating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio"  name="irating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-              <input type="radio"  name="irating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
-            <!-- </fieldset>  -->
-            <input type="text" name="imovie_id" value="<?php echo $row[2]; ?>" />
-            <input type="text" name="irating"></input>
-            <input type="submit" name="srating" value="Rate"/>
+            <form action="" method="post">
+                <fieldset class="rating">
+                    <input type="radio" id="<?= "star5#".$movie_id?>" name="<?="irating".$movie_id?>" value="10" /><label class = "full" for="<?= "star5#".$movie_id?>" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="<?= "star4.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="9" /><label class="half" for="<?= "star4.5#".$movie_id?>" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="<?= "star4#".$movie_id?>" name="<?="irating".$movie_id?>" value="8" /><label class = "full" for="<?= "star4#".$movie_id?>" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="<?= "star3.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="7" /><label class="half" for="<?= "star3.5#".$movie_id?>" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="<?= "star3#".$movie_id?>" name="<?="irating".$movie_id?>" value="6" /><label class = "full" for="<?= "star3#".$movie_id?>" title="Meh - 3 stars"></label>
+                    <input type="radio" id="<?= "star2.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="5" /><label class="half" for="<?= "star2.5#".$movie_id?>" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="<?= "star2#".$movie_id?>" name="<?="irating".$movie_id?>" value="4" /><label class = "full" for="<?= "star2#".$movie_id?>" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="<?= "star1.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="3" /><label class="half" for="<?= "star1.5#".$movie_id?>" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="<?= "star1#".$movie_id?>" name="<?="irating".$movie_id?>" value="2" /><label class = "full" for="<?= "star1#".$movie_id?>" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="<?= "star.5#".$movie_id?>" name="<?="irating".$movie_id?>" value="1" /><label class="half" for="<?= "star.5#".$movie_id?>" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+
+
+
+
+            <input class="movie-id-textfield"type="text" name="imovie_id" value="<?php echo $row[2]; ?>" />
+            <!--<input type="text" name="irating"></input>-->
+            <input id="rate-button" class="btn btn-default " type="submit" name="srating" value="Rate"/>
           </form>
 
             <a name="trailer" href="https://www.youtube.com/watch?v=Deadpool" target="_blank" value="Trailer" class="btn btn-default trailer">Trailer</a>
